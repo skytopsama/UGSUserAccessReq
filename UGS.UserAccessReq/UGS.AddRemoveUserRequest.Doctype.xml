@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="ns:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ns:workflow resource:WorkflowData">
+  <documentTypes xmlns="ns:workflow/DocumentType" xsi:schemaLocation="ns:workflow/DocumentType resource:DocumentType">
+    <documentType>
+      <name>UGS.AddRemoveUserRequest.Doctype</name>
+      <description>UGS Add Remove User Request</description>
+      <label>UGS.AddRemoveUserRequest.Doctype</label>
+      <postProcessorName>org.kuali.rice.edl.framework.workflow.EDocLiteDatabasePostProcessor</postProcessorName>
+      <superUserGroupName namespace="UGS.GENERAL">UGS.SuperUsers</superUserGroupName>
+      <blanketApproveGroupName namespace="KUALI">WorkflowAdmin</blanketApproveGroupName>
+      <reportingGroupName namespace="UGS.GENERAL">UGS.SuperUsers</reportingGroupName>
+      <defaultExceptionGroupName namespace="UGS.GENERAL">UGS.SuperUsers</defaultExceptionGroupName>
+      <docHandler>${workflow.url}/EDocLite</docHandler>
+      <notificationFromAddress>ugsedocs@indiana.edu</notificationFromAddress>
+      <active>true</active>
+      <policies>
+        <policy>
+          <name>DEFAULT_APPROVE</name>
+          <value>false</value>
+        </policy>
+      </policies>
+      <attributes>
+        <attribute>
+          <name>UGSAddRemoveDeptSearchAttribute</name>
+        </attribute>
+        <attribute>
+          <name>UGSAddUserIDSearchAttribute</name>
+        </attribute>
+        <attribute>
+          <name>UGSAddFirstNameSearchAttribute</name>
+        </attribute>
+        <attribute>
+          <name>UGSAddLastNameSearchAttribute</name>
+        </attribute>
+        <attribute>
+          <name>UGSRemoveUserIDSearchAttribute</name>
+        </attribute>
+        <attribute>
+          <name>UGSRemoveFirstNameSearchAttribute</name>
+        </attribute>
+        <attribute>
+          <name>UGSRemoveLastNameSearchAttribute</name>
+        </attribute>
+      </attributes>
+      <routingVersion>2</routingVersion>
+      <routePaths>
+        <routePath>
+          <start name="Initiated" nextNode="UGS.Email" />
+          <simple name="UGS.Email" nextNode="SimpleSplit" />
+          <split name="SimpleSplit" nextNode="UGS.AddRemoveRequest.UGS">
+            <branch name="Branch1">
+              <requests name="UGS.AddRemoveRequest1" nextNode="SimpleJoin" />
+            </branch>
+            <branch name="Branch2">
+              <requests name="UGS.AddRemoveRequest2" nextNode="SimpleJoin" />
+            </branch>
+            <branch name="Branch3">
+              <requests name="UGS.AddRemoveRequest3" nextNode="SimpleJoin" />
+            </branch>
+            <branch name="Branch4">
+              <requests name="UGS.AddRemoveRequest4" nextNode="SimpleJoin" />
+            </branch>
+            <branch name="Branch5">
+              <requests name="UGS.AddRemoveRequest5" nextNode="SimpleJoin" />
+            </branch>
+            <branch name="Branch6">
+              <requests name="UGS.AddRemoveRequest6" nextNode="SimpleJoin" />
+            </branch>
+            <branch name="Branch7">
+              <requests name="UGS.AddRemoveRequest7" nextNode="SimpleJoin" />
+            </branch>
+            <branch name="Branch8">
+              <requests name="UGS.AddRemoveRequest8" nextNode="SimpleJoin" />
+            </branch>
+            <branch name="Branch9">
+              <requests name="UGS.AddRemoveRequest9" nextNode="SimpleJoin" />
+            </branch>
+            <join name="SimpleJoin" />
+          </split>
+          <requests name="UGS.AddRemoveRequest.UGS" nextNode="UGS.AddRemoveRequest.InitatorFYI" />
+          <requests name="UGS.AddRemoveRequest.InitatorFYI" />
+        </routePath>
+      </routePaths>
+      <routeNodes>
+        <start name="Initiated">
+          <activationType>P</activationType>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </start>
+        <simple name="UGS.Email">
+          <from>ugsedocs@indiana.edu</from>
+          <to>initiator</to>
+          <testAddress>ugsedocs@indiana.edu</testAddress>
+          <style>UGS.AddRemove.Email.Initiator</style>
+          <type>org.kuali.rice.kew.mail.EmailNode</type>
+        </simple>
+        <split name="SimpleSplit" />
+        <requests name="UGS.AddRemoveRequest1">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_1</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <join name="SimpleJoin" />
+        <requests name="UGS.AddRemoveRequest.UGS">
+          <activationType>S</activationType>
+          <ruleTemplate>UGS.AddRemoveRequest_new.UGS</ruleTemplate>
+          <mandatoryRoute>true</mandatoryRoute>
+          <finalApproval>true</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest.InitatorFYI">
+          <activationType>S</activationType>
+          <ruleTemplate>UGS.AddRemoveRequest.InitatorFYI</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest2">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_2</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest3">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_3</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest4">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_4</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest5">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_5</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest6">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_6</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest7">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_7</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest8">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_8</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+        <requests name="UGS.AddRemoveRequest9">
+          <activationType>P</activationType>
+          <ruleTemplate>UGS.AddRemoveNotification_new_9</ruleTemplate>
+          <mandatoryRoute>false</mandatoryRoute>
+          <finalApproval>false</finalApproval>
+        </requests>
+      </routeNodes>
+    </documentType>
+  </documentTypes>
+</data>
+

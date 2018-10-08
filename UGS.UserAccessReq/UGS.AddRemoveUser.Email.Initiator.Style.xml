@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="ns:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ns:workflow resource:WorkflowData"><styles xmlns="ns:workflow/Style" xsi:schemaLocation="ns:workflow/Style resource:Style"><style name="UGS.AddRemove.Email.Initiator"><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+ <xsl:template match="emailNode">
+ <email xmlns="">
+ <subject>Add/Remove User Access Request</subject>
+ <body>
+You have successfully submitted your request to add or remove a user's access.  For reference, your document ID is <xsl:value-of select="*/org.kuali.rice.kew.api.document.Document/default/documentId" />.
+<xsl:text>
+</xsl:text>
+• You will receive an FYI notification when your request has been processed by the University Graduate School.
+
+• You can track your document. To learn how to do this, refer to the "eDoc reference" which is located in the University Graduate School Forms page in OneStart: https://onestart.iu.edu/my2-prd/portal/111863.
+              <xsl:variable name="docId" select="*/routeHeaderId" />
+              <xsl:variable name="path1" select="'https://onestart.iu.edu/kr-prd/kew/EDocLite?docId='" />
+			  <xsl:variable name="path2" select="'displayActionListView'" />
+ If you would like to view your document, please click the link below:
+ <xsl:value-of select="$path1" />
+<xsl:value-of select="$docId" />&amp;command=<xsl:value-of select="$path2" />
+<xsl:text>
+</xsl:text>
+Feel free to email ugsedocs@indiana.edu with any questions.
+</body>
+ </email>
+ </xsl:template>
+ </xsl:stylesheet></style></styles></data>
