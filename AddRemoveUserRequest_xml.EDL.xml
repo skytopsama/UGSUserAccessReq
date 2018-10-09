@@ -197,44 +197,73 @@ function checkBrowaerCompatibility(){
                     case "IN":
                       $('#department option[value!="0"]').remove();
                       $('#department').append('<option value = "" selected="selected">**Please Select Department/School**</option>');
+                      $('#department').append('<option value="other">Other (Please add note of it below)</option>');
                       $('#department').append('<option value="IN-ANAT">Medicine Anatomy</option>');
                       $('#department').append('<option value="IN-ANTH">Lib Arts Appld Anth</option>');
                       $('#department').append('<option value="IN-BIOC">Med Biochemistry</option>');
                       $('#department').append('<option value="IN-BIOP">Med Med Biophysics</option>');
                       $('#department').append('<option value="IN-BIST">Biostatistics</option>');
+                      $('#department').append('<option value="IN-BUKD">Blmngtn/Indpls Kelley Bus Grad</option>');
+                      $('#department').append('<option value="IN-BUPA">Business Grad Accountancy</option>');
+                      $('#department').append('<option value="IN-BUS">IN-BUS Business Graduate</option>');
+                      $('#department').append('<option value="IN-BUSG">IN-BUSG Business Graduate</option>');
                       $('#department').append('<option value="IN-COMM">Liberal Arts Com Studies</option>');
-                      $('#department').append('<option value="IN-DENT">Dentistry</option>');
+                      $('#department').append('<option value="IN-DENT">IN-DENT Dentistry Professional</option>');
+                      $('#department').append('<option value="IN-DENTM">IN-DENTM Dentistry Graduate</option>');
+                      $('#department').append('<option value="IN-DENTZ">IN-DENTZ Dentistry Graduate</option>');
                       $('#department').append('<option value="IN-ECON">Lib Arts Economics</option>');
                       $('#department').append('<option value="IN-EDUC">Education</option>');
                       $('#department').append('<option value="IN-ENG">Liberal Arts English</option>');
+                      $('#department').append('<option value="IN-ENGR">Engineering Graduate</option>');
                       $('#department').append('<option value="IN-GEOG">Liberal Arts Geograph</option>');
                       $('#department').append('<option value="IN-GEOL">Sch of Sci Geology</option>');
+                      $('#department').append('<option value="IN-GRAD">Medicine</option>');
+                      $('#department').append('<option value="IN-HERR">Herron Art Graduate</option>');
                       $('#department').append('<option value="IN-HIST">Liberal Arts History</option>');
                       $('#department').append('<option value="IN-INFO">Informatics</option>');
                       $('#department').append('<option value="IN-JOPR">GrSch - Lib Art Journ Pub Reln</option>');
+                      $('#department').append('<option value="IN-JOUR">Journalism Graduate</option>');
+                      $('#department').append('<option value="IN-LAW">IN-LAW Law Professional</option>');
+                      $('#department').append('<option value="IN-LAWD">IN-LAWD Law Doctoral</option>');
+                      $('#department').append('<option value="IN-LAWG">IN-LAWG Law Masters</option>');
+                      $('#department').append('<option value="IN-LAWJ">IN-LAWJ Law Masters</option>');
+                      $('#department').append('<option value="IN-LAWM">IN-LAWM Law Masters</option>');
+                      $('#department').append('<option value="IN-LIS">Library &amp; Info Sci Graduate</option>');
+                      $('#department').append('<option value="IN-MED">Medicine Professional</option>');
+                      $('#department').append('<option value="IN-MEDG">Medicine Graduate</option>');
                       $('#department').append('<option value="IN-MEDP">Public Health-Med</option>');
                       $('#department').append('<option value="IN-MGEN">Med Medical Genetics</option>');
+                      $('#department').append('<option value="IN-MHHS">Lib Arts Med Humanities</option>');
                       $('#department').append('<option value="IN-MICR">Med Microbiology</option>');
                       $('#department').append('<option value="IN-MNEU">Med Med Neurology</option>');
+                      $('#department').append('<option value="IN-MUS">Music Graduate</option>');
                       $('#department').append('<option value="IN-MUSE">Lib Arts Museum Stu</option>');
-                      $('#department').append('<option value="IN-NURS">Nursing</option>');
+                      $('#department').append('<option value="IN-NURS">Nursing Professional</option>');
                       $('#department').append('<option value="IN-PATH">Medicine Pathology</option>');
                       $('#department').append('<option value="IN-PBHL">Public Health</option>');
+                      $('#department').append('<option value="IN-PED">Phy Ed/Tour Mgt Graduate</option>');
                       $('#department').append('<option value="IN-PHAR">Med Pharmacology</option>');
                       $('#department').append('<option value="IN-PHIL">Philosophy</option>');
                       $('#department').append('<option value="IN-PHSL">Med Physiology</option>');
                       $('#department').append('<option value="IN-PHST">Philanthropy</option>');
                       $('#department').append('<option value="IN-POLS">Liberal Arts Pol Sci</option>');
                       $('#department').append('<option value="IN-SHRS">Hlth &amp; Rehb Sc</option>');
+                      $('#department').append('<option value="IN-SHHS">Health &amp; Human Sc</option>');
                       $('#department').append('<option value="IN-SOC">Lib Arts Sociology</option>');
                       $('#department').append('<option value="IN-SPAN">Lib Arts Spanish</option>');
-                      $('#department').append('<option value="IN-SWK">Social Work</option>');
+                      $('#department').append('<option value="IN-SPEA">Pub &amp; Envir Aff Graduate</option>');
+                      $('#department').append('<option value="IN-SPEAE">Executive Education Grad</option>');
+                      $('#department').append('<option value="IN-SWK">IN-SWK Social Work Graduate</option>');
+                      $('#department').append('<option value="IN-SWKD">IN-SWKD Social Work Graduate</option>');
                       $('#department').append('<option value="IN-TCEM">Trsm Conv Evnt Mgt</option>');
+                      $('#department').append('<option value="IN-TECH">Technology Graduate</option>');
+                      $('#department').append('<option value="IN-WLAC">Lib Arts Wrld Lang Cltr</option>');
                       $('#department').show();
                       break;
                     case "BL":
                       $('#department option[value!="0"]').remove();
                       $('#department').append('<option value = "" selected="selected">**Please Select Department/School**</option>');
+                      $('#department').append('<option value="other">Other (Please add note of it below)</option>');
                       $('#department').append('<option value="BL-AAAD">AfriAmer &amp; Dias Studies</option>');
                       $('#department').append('<option value="BL-AADM">Arts Administration</option>');
                       $('#department').append('<option value="BL-AFRI">African Studies</option>');
@@ -244,7 +273,18 @@ function checkBrowaerCompatibility(){
                       $('#department').append('<option value="BL-AST">Astronomy</option>');
                       $('#department').append('<option value="BL-BIOC">Biochemistry</option>');
                       $('#department').append('<option value="BL-BIOL">Biology</option>');
-                      $('#department').append('<option value="BL-BUS">Business Doctoral</option>');
+                      $('#department').append('<option value="BL-BKDT">BL-BKDT Business Admin Graduate</option>');
+                      $('#department').append('<option value="BL-BUEP">BL-BUEP Business Admin Graduate</option>');
+                      $('#department').append('<option value="BL-BUEX">BL-BUEX Business Admin Graduate</option>');
+                      $('#department').append('<option value="BL-BUKD">BL-BUKD Business Admin Graduate</option>');
+                      $('#department').append('<option value="BL-BUS">BL-BUS Business Doctoral</option>');
+                      $('#department').append('<option value="BL-BUSA">BL-BUSA Bus Systems &amp; Acctg Graduate</option>');
+                      $('#department').append('<option value="BL-BUSB">BL-BUSB Business Admin Graduate</option>');
+                      $('#department').append('<option value="BL-BUSD">BL-BUSD Business Doctoral</option>');
+                      $('#department').append('<option value="BL-BUSF">BL-BUSF Bus Finance MSF</option>');
+                      $('#department').append('<option value="BL-BUSL">BL-BUSL Business Admin Graduate/Law</option>');
+                      $('#department').append('<option value="BL-BUSS">BL-BUSS Bus Information Systems MSIS</option>');
+                      $('#department').append('<option value="BL-BUSX">BL-BUSX Bus Systems &amp; Acctg Grd/Law</option>');
                       $('#department').append('<option value="BL-CEUS">Central Eurasian Studies</option>');
                       $('#department').append('<option value="BL-CHEM">Chemistry</option>');
                       $('#department').append('<option value="BL-CJUS">Criminal Justice</option>');
@@ -252,7 +292,10 @@ function checkBrowaerCompatibility(){
                       $('#department').append('<option value="BL-CMCL">Communication &amp; Culture</option>');
                       $('#department').append('<option value="BL-CMLT">Comparative Literature</option>');
                       $('#department').append('<option value="BL-COGS">Cognitive Science</option>');
+                      $('#department').append('<option value="BL-COLL">Arts &amp; Sciences Graduate</option>');
+                      $('#department').append('<option value="BL-CSCI">Computer Science Graduate</option>');
                       $('#department').append('<option value="BL-EALC">East Asian Lang &amp; Cult</option>');
+                      $('#department').append('<option value="BL-EAS">Earth and Atmospheric Sciences</option>');
                       $('#department').append('<option value="BL-ECON">Economics</option>');
                       $('#department').append('<option value="BL-EDUC">Education</option>');
                       $('#department').append('<option value="BL-EDUCCEP">Education - Counseling and Education Psychology</option>');
@@ -261,34 +304,47 @@ function checkBrowaerCompatibility(){
                       $('#department').append('<option value="BL-EDUCIST">Education - Instruction Systems Technology</option>');
                       $('#department').append('<option value="BL-EDUCLCLE">Education - Literacy, Culture, and Language Education</option>');
                       $('#department').append('<option value="BL-ENG">English</option>');
+                      $('#department').append('<option value="BL-ENGR">Engineering</option>');
                       $('#department').append('<option value="BL-EURO">European Studies</option>');
-                      $('#department').append('<option value="BL-EURO">European Studies Graduate/Law</option>');
+                      $('#department').append('<option value="BL-EUROL">European Studies Graduate/Law</option>');
                       $('#department').append('<option value="BL-FINA">Fine Arts</option>');
                       $('#department').append('<option value="BL-FINS">Fine Arts Studio</option>');
                       $('#department').append('<option value="BL-FOLK">Folklore</option>');
                       $('#department').append('<option value="BL-FRIT">French and Italian</option>');
-                      $('#department').append('<option value="BL-GEOG">Geography</option>');
+                      $('#department').append('<option value="BL-GEOG">(Inactive)Geography</option>');
                       $('#department').append('<option value="BL-GEOL">Geological Sciences</option>');
                       $('#department').append('<option value="BL-GER">Germanic Studies</option>');
                       $('#department').append('<option value="BL-GNDR">Gender Studies</option>');
+                      $('#department').append('<option value="BL-GRAD5">Graduate School</option>');
                       $('#department').append('<option value="BL-HISP">Spanish &amp; Portuguese</option>');
                       $('#department').append('<option value="BL-HIST">History</option>');
+                      $('#department').append('<option value="BL-HPER">Health, PE &amp; Rec Graduate</option>');
                       $('#department').append('<option value="BL-HPSC">Hist &amp; Phil of Science</option>');
-                      $('#department').append('<option value="BL-CSCI">Informatics &amp; Computing – Computer Science</option>');
-                      $('#department').append('<option value="BL-ILS">Informatics &amp; Computing – Info &amp; Library Science</option>');
-                      $('#department').append('<option value="BL-INFO">Informatics &amp; Computing - Informatics</option>');
+                      $('#department').append('<option value="BL-ILS">Info &amp; Library Science</option>');
+                      $('#department').append('<option value="BL-INFO">Informatics Graduate</option>');
+                      $('#department').append('<option value="BL-INTL">International Studies</option>');
                       $('#department').append('<option value="BL-JOUR">Journalism</option>');
                       $('#department').append('<option value="BL-JSTU">Jewish Studies</option>');
-                      $('#department').append('<option value="BL-LAW">Law Grad</option>');
+                      $('#department').append('<option value="BL-LAW">BL-LAW Law Professional</option>');
+                      $('#department').append('<option value="BL-LAWA">BL-LAWA Law/Grad Bus Acctg MBA/MPA</option>');
+                      $('#department').append('<option value="BL-LAWB">BL-LAWB Law/Grad Bus MBA</option>');
+                      $('#department').append('<option value="BL-LAWE">BL-LAWE Law/Grad Euro St MA</option>');
+                      $('#department').append('<option value="BL-LAWL">BL-LAWL Law/Grad Latin American St MA</option>');
+                      $('#department').append('<option value="BL-LAWS">BL-LAWS Law/Grad SPEA MPA</option>');
                       $('#department').append('<option value="BL-LING">Linguistics</option>');
-                      $('#department').append('<option value="BL-LTAM">Latin American St Graduate/Law</option>');
                       $('#department').append('<option value="BL-LTAM">Latin American Studies</option>');
+                      $('#department').append('<option value="BL-LTAML">Latin American St Graduate/Law</option>');
                       $('#department').append('<option value="BL-MATH">Mathematics</option>');
                       $('#department').append('<option value="BL-MED">Medicine Grad</option>');
-                      $('#department').append('<option value="BL-MUS">Music Grad</option>');
+                      $('#department').append('<option value="BL-MSCH">Media Grad</option>');
+                      $('#department').append('<option value="BL-MUS">BL-MUS Music Graduate</option>');
+                      $('#department').append('<option value="BL-MUSA">BL-MUSA Music Ugrd Diploma</option>');
+                      $('#department').append('<option value="BL-MUSD">BL-MUSD Music Grad Diploma</option>');
                       $('#department').append('<option value="BL-NELC">Near Eastern Lang &amp; Cult</option>');
                       $('#department').append('<option value="BL-NEUS">Neural Science</option>');
-                      $('#department').append('<option value="BL-OPT">Optometry Grad</option>');
+                      $('#department').append('<option value="BL-NURS">Nursing Graduate</option>');
+                      $('#department').append('<option value="BL-OPT">BL-OPT Optometry Professional</option>');
+                      $('#department').append('<option value="BL-OPTB">BL-OPTB Optometry Professional</option>');
                       $('#department').append('<option value="BL-PHIL">Philosophy</option>');
                       $('#department').append('<option value="BL-PHYS">Physics</option>');
                       $('#department').append('<option value="BL-POLS">Political Science</option>');
@@ -296,8 +352,13 @@ function checkBrowaerCompatibility(){
                       $('#department').append('<option value="BL-REEI">Russian&amp;East Europe Inst</option>');
                       $('#department').append('<option value="BL-REL">Religious Studies</option>');
                       $('#department').append('<option value="BL-SLAV">Slavic Languages &amp; Lit</option>');
+                      $('#department').append('<option value="BL-SLIS">Library &amp; Info Sci Graduate</option>');
                       $('#department').append('<option value="BL-SLST">Second Language Studies</option>');
+                      $('#department').append('<option value="BL-SOAD">School of Art &amp; Design</option>');
                       $('#department').append('<option value="BL-SOC">Sociology</option>');
+                      $('#department').append('<option value="BL-SPCN">BL-SPCN SPEA Public Affairs Graduate</option>');
+                      $('#department').append('<option value="BL-SPEA">BL-SPEA SPEA Public Affairs Graduate</option>');
+                      $('#department').append('<option value="BL-SPEAL">BL-SPEAL SPEA Joint MPA/JD</option>');
                       $('#department').append('<option value="BL-SPES">Environmental Science</option>');
                       $('#department').append('<option value="BL-SPH">Public Health</option>');
                       $('#department').append('<option value="BL-SPHS">Speech&amp;Hearing Sciences</option>');
@@ -305,8 +366,10 @@ function checkBrowaerCompatibility(){
                       $('#department').append('<option value="BL-SPPP">Public Policy</option>');
                       $('#department').append('<option value="BL-SSTD">Social Studies</option>');
                       $('#department').append('<option value="BL-STAT">Statistics</option>');
+                      $('#department').append('<option value="BL-SWK">Social Work</option>');
                       $('#department').append('<option value="BL-TEL">Telecommunications</option>');
                       $('#department').append('<option value="BL-THTR">Theatre &amp; Drama</option>');
+                      $('#department').append('<option value="BL-WEUR">West European Studies</option>');
                       $('#department').show();
                       break;
                     default:
@@ -911,8 +974,8 @@ function checkBrowaerCompatibility(){
                     <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'fellowContactOnly'" />
                     </xsl:call-template>
-              </xsl:with-param>
-            </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
 
                 <h4>Bulletin</h4>
                 <xsl:call-template name="widget">
@@ -945,6 +1008,8 @@ function checkBrowaerCompatibility(){
                     </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
+
+                <!-- IUPUI Exclusive Options -->
                 <div xmlns="" id="idIUPUIOptions" style="display:none;">
                   <h4>IUPUI Graduate Office Roles</h4>
                   <xsl:call-template name="inlineWidget">
@@ -1076,11 +1141,18 @@ function checkBrowaerCompatibility(){
                 </xsl:call-template>
               </div>
 
+              <!-- REQUEST JUSTIFICATION -->
+              <h4>Comments</h4>
+              <xsl:call-template name="widget">
+                <xsl:with-param name="fieldName" select="'justificationForRequest'" />
+                <xsl:with-param name="readOnly" select="'true'" />
+              </xsl:call-template>
+
               <!--  OPTIONS  -->
               <div xmlns="" id="idOptionsReadOnly" style="display:block">
                 <h3 id="idOptionsHeaderReadOnly" style="display:block">Options</h3>
                 <br />
-                <h4>eApplication</h4>
+                <h4>Admission Applications</h4> <!-- eApp -->
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
@@ -1094,10 +1166,31 @@ function checkBrowaerCompatibility(){
                   </xsl:with-param>
                 </xsl:call-template>
 
-                <h4>Awards and Fellowships</h4>
                 <xsl:call-template name="widget">
-                  <xsl:with-param name="fieldName" select="'sharePoint'" />
+                  <xsl:with-param name="fieldName" select="'eAppTrainingCompleted'" />
                   <xsl:with-param name="readOnly" select="'true'" />
+                </xsl:call-template>
+                <div xmlns="" id="ideAppTrainingText">
+                  <h5 style="width: 70%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until traning is completed.</i></h5>
+                </div>
+                <br />
+
+                <h4>Awards and Fellowships</h4>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'fellowCanvasCourse'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'iuieAccess'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'fellowContactOnly'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
                 </xsl:call-template>
 
                 <h4>Bulletin</h4>
@@ -1106,7 +1199,7 @@ function checkBrowaerCompatibility(){
                   <xsl:with-param name="readOnly" select="'true'" />
                 </xsl:call-template>
 
-                <h4>eDocs</h4>
+                <h4>Graduate School Student Progression eDoc Approver</h4>
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
@@ -1129,14 +1222,77 @@ function checkBrowaerCompatibility(){
                       <xsl:with-param name="fieldName" select="'phdCommencementApp'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'secRecorder'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'dgs'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
 
-                <h4>Comments</h4>
-                <xsl:call-template name="widget">
-                  <xsl:with-param name="fieldName" select="'justificationForRequest'" />
-                  <xsl:with-param name="readOnly" select="'true'" />
-                </xsl:call-template>
+                <!-- IUPUI Exclusive Options -->
+                <div xmlns="" id="idIUPUIOptions" style="display:block;">
+                  <h4>IUPUI Graduate Office Roles</h4>
+                  <xsl:call-template name="inlineWidget">
+                    <xsl:with-param name="body">
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'adminAssistant'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'curriculumContact'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'depChair'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'gradStudiesAdv'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'dean'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'associateDean'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'fiscal'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'gradAdv'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'gradSecretary'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'gradRecorder'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'recruiter'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'newsletterRecipient'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'other'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                    </xsl:with-param>
+                  </xsl:call-template>
+                </div>
               </div>
 
               <div xmlns="" id="idNotesFooter">
