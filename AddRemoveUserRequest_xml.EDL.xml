@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="ns:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ns:workflow resource:WorkflowData"><edoclite xmlns="ns:workflow/EDocLite" xsi:schemaLocation="ns:workflow/EDocLite resource:EDocLite"><edl name="AddRemoveUserRequest_xml" title="UGS Add/Remove User Request">
+      <instructions>*Fields with an asterisk are required.</instructions>
+      <javascript>
+        <!-- javascript here -->
+        <![CDATA[//
+          $(document).ready(function () {
+            console.log($docStatus);
+            console.log($currentNode);
+            console.log($isAtNodeInitiated);
+
+           if ($docStatus == 'INITIATED' && $currentNode == 'Initiated')
+            {
+              $('#addRemove').change(showSections);
+              $('#campus').change(setDepartments);
+              $('#campus').change(resetForm);
+              $('#department').change(showAddRemove)
+              $('#cbRemoveAll').change(updateAll)
+            }
+
+          });
+
+function checkBrowaerCompatibility(){
+			var browser = window.navigator.userAgent;
+			var msie = browser.indexOf("MSIE ");
+
+			if(navigator.userAgent.indexOf("IE") != -1 ) {
+				var versionNum = parseInt(browser.substring(msie + 5, browser.indexOf(".", msie)));
+				if (versionNum < 10) {
+					//They are using an unsupported version of IE. Hide everyhting except warning message
+					var bodyContents = document.getElementsByTagName('body')[0].childNodes;
+					for (var i = 0; i<bodyContents.length; i++) {
+						bodyContents[i].style.display = 'none';
+					}
+					var warningDiv = document.createElement('div');
+					warningDiv.id = 'browserWarning';
+					document.getElementsByTagName('body')[0].appendChild(warningDiv);
+					warningMessage = "<b>Your version of Internet Explorer is out of date!</b>.<br/> \
+					-------------------------------------------------------------------------<br/> \
+					If you want to use Internet explorer, please update it to the latest version. Found here: <a href=http://windows.microsoft.com/en-us/internet-explorer/download-ie>Update Internet Explorer</a><br/><br/> \
+					<b>However, it is recommended that you use 'Google Chrome'.</b><br/> \
+					If you do not have 'Google Chrome' you can get it here: <a href='https://www.google.com/chrome/browser/desktop/index.html'>Google Chrome Download</a><br/><br/> Thanks!";
+					warningDiv.innerHTML = warningMessage;
+					warningDiv.style.fontSize = "large";
+					warningDiv.style.margin = "auto";
+					warningDiv.style.width = "80%";
+					warningDiv.style.border = "5px solid #33CC33";
+					warningDiv.style.padding = "10px";
+					warningDiv.style.textAlign = "center";
+
+				}
+				else{
+					//They are using a supported version of IE...but it's still IE
+					console.log("You are using Internet Explorer. If you experience any problems please try using a different browser (like 'Google Chrome')");
+				}
+			}
+			else {
+				console.log("You are NOT using Internet Explorer. Good for you");
+			}
+		}
+
+          function showAddRemove()
+          {
+            document.getElementById("idAddRemove").style.display="block";
+          }
+
+
+          function initForm(x) {
+              $('#addText').val('');
+          }
+
+          function updateAll()
+          {
+
+
+          }
+
+
+
+          function resetForm(){
+              var $addRemoveReplace = $('#addRemove');
+              var $removeFirstName = $('#removeFirstName');
+              var $removeLastName = $('#removeLastName');
+              var $removeUserid = $('#removeUserid');
+              var $addFirstName = $('#addFirstName');
+              var $addLastName = $('#addLastName');
+              var $addUserID = $('#addUserID');
+              var $addJobTitle = $('#addJobTitle');
+              var $addCampusAddress = $('#addCampusAddress');
+              var $addDepartmentEmail = $('#addDepartmentEmail');
+              $addRemoveReplace.val("Select");
+              $removeFirstName.val("");
+              $removeLastName.val("");
+              $removeUserid.val("");
+              $addFirstName.val("");
+              $addLastName.val("");
+              $addUserID.val("");
+              $addJobTitle.val("");
+              $addCampusAddress.val("");
+              $addDepartmentEmail.val("");
+              document.getElementById("idRemovePerson").style.display="none";
+              document.getElementById("idAddPerson").style.display="none";
+              document.getElementById("idRemoveApps").style.display="none";
+              document.getElementById("idAddApps").style.display="none";
+              document.getElementById("idSwapOptions").style.display="none";
+              document.getElementById("idComments").style.display="none";
+              document.getElementById("idOptions").style.display="none";
+          }
+
+            function showSections()
+              {
+               var addRemoveReplace = $('#addRemove').val();
+               var $removeFirstName = $('#removeFirstName');
+               var $removeLastName = $('#removeLastName');
+               var $removeUserid = $('#removeUserid');
+               var $addFirstName = $('#addFirstName');
+               var $addLastName = $('#addLastName');
+               var $addUserID = $('#addUserID');
+               var $addJobTitle = $('#addJobTitle');
+               var $addCampusAddress = $('#addCampusAddress');
+               var $addDepartmentEmail = $('#addDepartmentEmail');
+
+               switch (addRemoveReplace)
+               {
+                  case "add":
+                    document.getElementById("idAddPerson").style.display="block";
+                    document.getElementById("idRemovePerson").style.display="none";
+                    $removeFirstName.val("");
+                    $removeLastName.val("");
+                    $removeUserid.val("");
+                    document.getElementById("idOptions").style.display="block";
+                    document.getElementById("idComments").style.display="block";
+                    document.getElementById("idAddApps").style.display="block";
+                    document.getElementById("idRemoveAll").style.display="none";
+                    document.getElementById("idRemoveApps").style.display="none";
+                    document.getElementById("idSwapOptions").style.display="none";
+                    break;
+                  case "remove":
+                    document.getElementById("idRemovePerson").style.display="block";
+                    document.getElementById("idAddPerson").style.display="none";
+                    document.getElementById("idRemoveAll").style.display="block";
+                    $addFirstName.val("");
+                    $addLastName.val("");
+                    $addUserID.val("");
+                    $addJobTitle.val("");
+                    $addCampusAddress.val("");
+                    $addDepartmentEmail.val("");
+                    document.getElementById("idOptions").style.display="block";
+                    document.getElementById("idRemoveApps").style.display="block";
+                    document.getElementById("idComments").style.display="block";
+                    document.getElementById("idAddApps").style.display="none";
+                    document.getElementById("idSwapOptions").style.display="none";
+                    break;
+                  case "replace":
+                    document.getElementById("idRemovePerson").style.display="block";
+                    document.getElementById("idAddPerson").style.display="block";
+                    document.getElementById("idComments").style.display="block";
+                    document.getElementById("idOptions").style.display="none";
+                    document.getElementById("idSwapOptions").style.display="block";
+                    break;
+                  case "Select":
+                    console.log("ShowSections Select");
+                    resetForm();
+                    break;
+                  default:
+                    document.getElementById("idRemovePerson").style.display="none";
+                    document.getElementById("idAddPerson").style.display="none";
+                    document.getElementById("idRemoveApps").style.display="none";
+                    document.getElementById("idAddApps").style.display="none";
+                    document.getElementById("idSwapOptions").style.display="none";
+                    document.getElementById("idComments").style.display="none";
+                    document.getElementById("idOptions").style.display="none";
+               }
+
+              }
+
+              function setDepartments(){
+                var campus = $('#campus').val();
+                document.getElementById("idAddRemove").style.display="none";
+                document.getElementById("idRemovePerson").style.display="none";
+                document.getElementById("idAddPerson").style.display="none";
+                document.getElementById("idRemoveApps").style.display="none";
+                document.getElementById("idAddApps").style.display="none";
+                document.getElementById("idSwapOptions").style.display="none";
+                document.getElementById("idComments").style.display="none";
+                switch (campus)
+                  {
+                    case "IN":
+                      $('#department option[value!="0"]').remove();
+                      $('#department').append('<option value = "" selected="selected">**Please Select Department/School**</option>');
+                      $('#department').append('<option value="IN-ANAT">Medicine Anatomy</option>');
+                      $('#department').append('<option value="IN-ANTH">Lib Arts Appld Anth</option>');
+                      $('#department').append('<option value="IN-BIOC">Med Biochemistry</option>');
+                      $('#department').append('<option value="IN-BIOP">Med Med Biophysics</option>');
+                      $('#department').append('<option value="IN-BIST">Biostatistics</option>');
+                      $('#department').append('<option value="IN-COMM">Liberal Arts Com Studies</option>');
+                      $('#department').append('<option value="IN-DENT">Dentistry</option>');
+                      $('#department').append('<option value="IN-ECON">Lib Arts Economics</option>');
+                      $('#department').append('<option value="IN-EDUC">Education</option>');
+                      $('#department').append('<option value="IN-ENG">Liberal Arts English</option>');
+                      $('#department').append('<option value="IN-GEOG">Liberal Arts Geograph</option>');
+                      $('#department').append('<option value="IN-GEOL">Sch of Sci Geology</option>');
+                      $('#department').append('<option value="IN-HIST">Liberal Arts History</option>');
+                      $('#department').append('<option value="IN-INFO">Informatics</option>');
+                      $('#department').append('<option value="IN-JOPR">GrSch - Lib Art Journ Pub Reln</option>');
+                      $('#department').append('<option value="IN-MEDP">Public Health-Med</option>');
+                      $('#department').append('<option value="IN-MGEN">Med Medical Genetics</option>');
+                      $('#department').append('<option value="IN-MICR">Med Microbiology</option>');
+                      $('#department').append('<option value="IN-MNEU">Med Med Neurology</option>');
+                      $('#department').append('<option value="IN-MUSE">Lib Arts Museum Stu</option>');
+                      $('#department').append('<option value="IN-NURS">Nursing</option>');
+                      $('#department').append('<option value="IN-PATH">Medicine Pathology</option>');
+                      $('#department').append('<option value="IN-PBHL">Public Health</option>');
+                      $('#department').append('<option value="IN-PHAR">Med Pharmacology</option>');
+                      $('#department').append('<option value="IN-PHIL">Philosophy</option>');
+                      $('#department').append('<option value="IN-PHSL">Med Physiology</option>');
+                      $('#department').append('<option value="IN-PHST">Philanthropy</option>');
+                      $('#department').append('<option value="IN-POLS">Liberal Arts Pol Sci</option>');
+                      $('#department').append('<option value="IN-SHRS">Hlth &amp; Rehb Sc</option>');
+                      $('#department').append('<option value="IN-SOC">Lib Arts Sociology</option>');
+                      $('#department').append('<option value="IN-SPAN">Lib Arts Spanish</option>');
+                      $('#department').append('<option value="IN-SWK">Social Work</option>');
+                      $('#department').append('<option value="IN-TCEM">Trsm Conv Evnt Mgt</option>');
+                      $('#department').show();
+                      break;
+                    case "BL":
+                      $('#department option[value!="0"]').remove();
+                      $('#department').append('<option value = "" selected="selected">**Please Select Department/School**</option>');
+                      $('#department').append('<option value="BL-AAAD">AfriAmer &amp; Dias Studies</option>');
+                      $('#department').append('<option value="BL-AADM">Arts Administration</option>');
+                      $('#department').append('<option value="BL-AFRI">African Studies</option>');
+                      $('#department').append('<option value="BL-AMID">Apparel Merch&amp;Int Design</option>');
+                      $('#department').append('<option value="BL-AMST">American Studies</option>');
+                      $('#department').append('<option value="BL-ANTH">Anthropology</option>');
+                      $('#department').append('<option value="BL-AST">Astronomy</option>');
+                      $('#department').append('<option value="BL-BIOC">Biochemistry</option>');
+                      $('#department').append('<option value="BL-BIOL">Biology</option>');
+                      $('#department').append('<option value="BL-BUS">Business Doctoral</option>');
+                      $('#department').append('<option value="BL-CEUS">Central Eurasian Studies</option>');
+                      $('#department').append('<option value="BL-CHEM">Chemistry</option>');
+                      $('#department').append('<option value="BL-CJUS">Criminal Justice</option>');
+                      $('#department').append('<option value="BL-CLAS">Classical Studies</option>');
+                      $('#department').append('<option value="BL-CMCL">Communication &amp; Culture</option>');
+                      $('#department').append('<option value="BL-CMLT">Comparative Literature</option>');
+                      $('#department').append('<option value="BL-COGS">Cognitive Science</option>');
+                      $('#department').append('<option value="BL-EALC">East Asian Lang &amp; Cult</option>');
+                      $('#department').append('<option value="BL-ECON">Economics</option>');
+                      $('#department').append('<option value="BL-EDUC">Education</option>');
+                      $('#department').append('<option value="BL-EDUCCEP">Education - Counseling and Education Psychology</option>');
+                      $('#department').append('<option value="BL-EDUCCI">Education - Curriculum and Instruction</option>');
+                      $('#department').append('<option value="BL-EDUCELPS">Education - Educational Leadership and Policy Studies</option>');
+                      $('#department').append('<option value="BL-EDUCIST">Education - Instruction Systems Technology</option>');
+                      $('#department').append('<option value="BL-EDUCLCLE">Education - Literacy, Culture, and Language Education</option>');
+                      $('#department').append('<option value="BL-ENG">English</option>');
+                      $('#department').append('<option value="BL-EURO">European Studies</option>');
+                      $('#department').append('<option value="BL-EURO">European Studies Graduate/Law</option>');
+                      $('#department').append('<option value="BL-FINA">Fine Arts</option>');
+                      $('#department').append('<option value="BL-FINS">Fine Arts Studio</option>');
+                      $('#department').append('<option value="BL-FOLK">Folklore</option>');
+                      $('#department').append('<option value="BL-FRIT">French and Italian</option>');
+                      $('#department').append('<option value="BL-GEOG">Geography</option>');
+                      $('#department').append('<option value="BL-GEOL">Geological Sciences</option>');
+                      $('#department').append('<option value="BL-GER">Germanic Studies</option>');
+                      $('#department').append('<option value="BL-GNDR">Gender Studies</option>');
+                      $('#department').append('<option value="BL-HISP">Spanish &amp; Portuguese</option>');
+                      $('#department').append('<option value="BL-HIST">History</option>');
+                      $('#department').append('<option value="BL-HPSC">Hist &amp; Phil of Science</option>');
+                      $('#department').append('<option value="BL-CSCI">Informatics &amp; Computing – Computer Science</option>');
+                      $('#department').append('<option value="BL-ILS">Informatics &amp; Computing – Info &amp; Library Science</option>');
+                      $('#department').append('<option value="BL-INFO">Informatics &amp; Computing - Informatics</option>');
+                      $('#department').append('<option value="BL-JOUR">Journalism</option>');
+                      $('#department').append('<option value="BL-JSTU">Jewish Studies</option>');
+                      $('#department').append('<option value="BL-LAW">Law Grad</option>');
+                      $('#department').append('<option value="BL-LING">Linguistics</option>');
+                      $('#department').append('<option value="BL-LTAM">Latin American St Graduate/Law</option>');
+                      $('#department').append('<option value="BL-LTAM">Latin American Studies</option>');
+                      $('#department').append('<option value="BL-MATH">Mathematics</option>');
+                      $('#department').append('<option value="BL-MED">Medicine Grad</option>');
+                      $('#department').append('<option value="BL-MUS">Music Grad</option>');
+                      $('#department').append('<option value="BL-NELC">Near Eastern Lang &amp; Cult</option>');
+                      $('#department').append('<option value="BL-NEUS">Neural Science</option>');
+                      $('#department').append('<option value="BL-OPT">Optometry Grad</option>');
+                      $('#department').append('<option value="BL-PHIL">Philosophy</option>');
+                      $('#department').append('<option value="BL-PHYS">Physics</option>');
+                      $('#department').append('<option value="BL-POLS">Political Science</option>');
+                      $('#department').append('<option value="BL-PSY">Psychology</option>');
+                      $('#department').append('<option value="BL-REEI">Russian&amp;East Europe Inst</option>');
+                      $('#department').append('<option value="BL-REL">Religious Studies</option>');
+                      $('#department').append('<option value="BL-SLAV">Slavic Languages &amp; Lit</option>');
+                      $('#department').append('<option value="BL-SLST">Second Language Studies</option>');
+                      $('#department').append('<option value="BL-SOC">Sociology</option>');
+                      $('#department').append('<option value="BL-SPES">Environmental Science</option>');
+                      $('#department').append('<option value="BL-SPH">Public Health</option>');
+                      $('#department').append('<option value="BL-SPHS">Speech&amp;Hearing Sciences</option>');
+                      $('#department').append('<option value="BL-SPPA">Public Affairs</option>');
+                      $('#department').append('<option value="BL-SPPP">Public Policy</option>');
+                      $('#department').append('<option value="BL-SSTD">Social Studies</option>');
+                      $('#department').append('<option value="BL-STAT">Statistics</option>');
+                      $('#department').append('<option value="BL-TEL">Telecommunications</option>');
+                      $('#department').append('<option value="BL-THTR">Theatre &amp; Drama</option>');
+                      $('#department').show();
+                      break;
+                    default:
+                      $('#department option[value!="0"]').remove();
+                      $('#department').append('<option value = "" selected="selected">**Please Select Department/School**</option>');
+                      $('#department').show();
+                  }
+              }
+               ]]>
+
+      </javascript>
+
+      <!-- *******  FIELDDEFS *******       -->
+
+      <!-- ADD/REMOVE/REPLACE -->
+      <fieldDef name="addRemove" title="Would you like to add, remove or replace a user?">
+        <display>
+          <type>select</type>
+          <meta>
+            <name>size</name>
+            <value>4</value>
+          </meta>
+          <values title="**Please Select**" />
+          <values title="Add Only">add</values>
+          <values title="Remove Only">remove</values>
+          <values title="Replace (swap)">replace</values>
+        </display>
+        <validation required="true" />
+      </fieldDef>
+
+      <!--  CAMPUS-->
+      <fieldDef attributeName="UGSAddRemoveCampusAttribute" name="campus" title="Campus:">
+        <display>
+          <type>select</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+          <values title="**Select your campus**" />
+          <values title="IU Bloomington">BL</values>
+          <values title="IUPUI Indianapolis">IN</values>
+        </display>
+        <validation required="true" />
+      </fieldDef>
+
+      <!--  DEPARTMENT   -->
+      <fieldDef attributeName="UGSAddRemoveDeptAttribute" name="department" title="School/Department">
+        <display>
+          <type>select</type>
+          <meta>
+            <name>size</name>
+            <value>3</value>
+          </meta>
+          <values title="**Please Select Department/School**">select</values>
+        </display>
+        <validation required="true" />
+      </fieldDef>
+
+      <!-- ADD PERSON -->
+      <fieldDef name="addUserID" title="NetworkID">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>15</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
+      <fieldDef name="addFirstName" title="First Name">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>15</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+        <validation required="false" />
+      </fieldDef>
+
+      <fieldDef name="addLastName" title="Last Name">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>15</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
+      <fieldDef name="addJobTitle" title="Job Title">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>80</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>3</value>
+          </meta>
+        </display>
+      </fieldDef>
+
+      <fieldDef name="addDepartmentEmail" title="Department Email">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>25</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
+      <fieldDef name="addCampusAddress" title="Campus Address">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>80</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>3</value>
+          </meta>
+        </display>
+      </fieldDef>
+
+      <!-- REMOVE PERSON -->
+      <fieldDef name="removeUserid" title="NetworkID">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>15</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
+      <fieldDef name="removeFirstName" title="First Name">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>15</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
+      <fieldDef name="removeLastName" title="Last Name">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>15</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
+      <!--  OPTIONS   -->
+
+      <!--  AWARDS AND FELLOWSHIPS CANVAS COURSE  -->
+      <fieldDef name="fellowCanvasCourse" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Awards and Fellowships Canvas Course">Awards and Fellowships Canvas Course</values>
+        </display>
+      </fieldDef>
+
+      <!--  IUIE ACCESS  -->
+      <fieldDef name="iuieAccess" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="IUIE Access">IUIE Access</values>
+        </display>
+      </fieldDef>
+
+      <!--  FELLOWSHIP CONTACT ONLY  -->
+      <fieldDef name="fellowContactOnly" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Fellow Contact Only">Fellow Contact Only</values>
+        </display>
+      </fieldDef>
+
+      <!-- BULLETIN CONTACT   -->
+      <fieldDef name="bulletin" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Bulletin contact">Bulletin contact</values>
+        </display>
+      </fieldDef>
+
+      <!-- eApp ADMIN CENTER   -->
+      <fieldDef name="eAppAdminCenter" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Admin Center">eApp Admin Center</values>
+        </display>
+      </fieldDef>
+
+      <!-- eAPP APPROVER   -->
+      <fieldDef name="eAppApprover" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="eApp Approver">eApp Approver</values>
+        </display>
+      </fieldDef>
+
+      <!-- eAPP TRANING COMPLETED   -->
+      <fieldDef name="eAppTrainingCompleted" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="eApp Traning Completed">eApp Traning Completed</values>
+        </display>
+      </fieldDef>
+
+      <!-- MASTERS EDOC   -->
+      <fieldDef name="maAppAdvDeg" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Application and Recommendation for Advanced Degree">Master's Application and Recommendation for Advanced Degree</values>
+        </display>
+      </fieldDef>
+
+      <!--  COMMENCEMENT EDOC-->
+      <fieldDef name="phdCommencementApp" title="">
+        <display>
+          <type>checkbox</type>
+          <values title=" Ph.D. Commencement Participation (coming to IUPUI soon)">Ph.D.Commencement Participation Application</values>
+        </display>
+      </fieldDef>
+
+      <!--  DEFENSE ANNOUNCEMENT EDOC   -->
+      <fieldDef name="defenseAnnouncement" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Defense Announcement">Defense Announcement</values>
+        </display>
+      </fieldDef>
+
+      <!--  NOMINATION OF RESEARCH COMMITEE EDOC   -->
+      <fieldDef name="nomResCommittee" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Nomination of Research Committee">Nomination of Research Committee</values>
+        </display>
+      </fieldDef>
+
+      <!--  CANDIDACY EDOC  -->
+      <fieldDef name="nomCandidacy" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Nomination to Candidacy">Nomination to Candidacy</values>
+        </display>
+      </fieldDef>
+
+      <!--  SECRETARY RECORDER  -->
+      <fieldDef name="secRecorder" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Secretary Recorder">Secretary Recorder</values>
+        </display>
+      </fieldDef>
+
+      <!--  SECRETARY RECORDER  -->
+      <fieldDef name="dgs" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="DGS">DGS</values>
+        </display>
+      </fieldDef>
+
+      <!-- JUSTIFICATION   -->
+      <fieldDef name="justificationForRequest" title="Enter a brief justification and any other comments (required)">
+        <display>
+          <type>textarea</type>
+          <meta>
+            <name>cols</name>
+            <value>150</value>
+          </meta>
+          <meta>
+            <name>rows</name>
+            <value>6</value>
+          </meta>
+        </display>
+        <validation required="true">
+          <message>Please enter a justification/comment.</message>
+        </validation>
+      </fieldDef>
+
+    </edl><style name="AddRemoveUserRequest_xsl"><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:edl-func="xalan://org.kuali.rice.edl.framework.util.EDLFunctions" version="1.0">
+        <xsl:include href="widgets-bootstrap" />
+        <xsl:include href="UGS-bootstrap-notes" />
+        <xsl:output indent="yes" method="html" omit-xml-declaration="yes" />
+        <xsl:param name="overrideMain" select="'false'" />
+
+        <!-- *******  VARIABLES ******* -->
+        <xsl:variable name="pageTitle">Add/Remove User Request for University Graduate School Systems</xsl:variable>
+        <xsl:variable name="docTitle">Add/Remove User Request for University Graduate School Systems</xsl:variable>
+        <xsl:variable name="docId" select="/documentContent/documentState/docId" />
+        <xsl:variable name="currentNode" select="edl-func:getCurrentNodeName($docId)" />
+        <xsl:variable name="noteReadOnly" select="'false'" />
+        <xsl:variable name="editable" select="/documentContent/documentState/editable" />
+        <xsl:variable name="isEditable" select="boolean($editable='true')" />
+        <xsl:variable name="docHeaderId" select="/documentContent/documentState/docId" />
+        <xsl:variable name="isAtNodeInitiated" select="edl-func:isAtNode($docHeaderId, 'Initiated')" />
+        <xsl:variable name="docStatus" select="//documentState/workflowDocumentState/status" />
+
+        <xsl:template name="mainBody">
+          <script xmlns="" type="text/javascript">checkBrowaerCompatibility();</script>
+
+          <script xmlns="" type="text/javascript">
+            var $currentNode = '<xsl:value-of select="$currentNode" />';
+            var $docStatus = '<xsl:value-of select="$docStatus" />';
+            var $isAtNodeInitiated = '<xsl:value-of select="$isAtNodeInitiated" />';
+            $(document).ready(function () {var init = "<xsl:value-of select="$isAtNodeInitiated" />"; initForm(init);});
+
+
+          </script>
+
+          <xsl:variable name="docHeaderId" select="/documentContent/documentState/docId" />
+          <xsl:variable name="isAtNodeInitiated" select="edl-func:isAtNode($docHeaderId, 'Initiated')" />
+          <xsl:variable name="docStatus" select="//documentState/workflowDocumentState/status" />
+
+          <xsl:call-template name="validationMessages" />
+
+          <xsl:choose>
+            <xsl:when test="not($isEditable)">
+              <a xmlns="" class="btn btn-primary pull-right" href="#" onclick="printForm();" title="Print">
+                <i class="fa fa-print fa-lg" />
+              </a>
+            </xsl:when>
+          </xsl:choose>
+
+          <!-- Create editable page for intitiated and read-only for all else  -->
+
+          <xsl:choose>
+            <xsl:when test="$docStatus = 'INITIATED'">
+
+              <!-- GET CAMPUS AND DEPT -->
+              <div xmlns="" id="idCampusDept">
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'campus'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'department'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+              </div>
+
+              <!-- GET ADD/REMOVE/SWAP-->
+              <div xmlns="" id="idAddRemove" style="display:none">
+                <xsl:call-template name="widget">
+                  <xsl:with-param name="fieldName" select="'addRemove'" />
+                </xsl:call-template>
+              </div>
+
+              <!--  GROUP OF ADD PERSON WIDGETS-->
+              <div xmlns="" id="idAddPerson" style="display:none">
+                <h3>Add Person</h3>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addUserID'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addFirstName'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addLastName'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addJobTitle'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addCampusAddress'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addDepartmentEmail'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+              </div>
+
+              <!--  GROUP OF REMOVE PERSON WIDGETS-->
+              <div xmlns="" id="idRemovePerson" style="display:none">
+                <h3>Remove Person</h3>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'removeUserid'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'removeFirstName'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'removeLastName'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+              </div>
+
+              <!-- REQUEST JUSTIFICATION -->
+              <div xmlns="" id="idComments" style="display:none">
+                <h4>Comments</h4>
+                <xsl:call-template name="widget">
+                  <xsl:with-param name="fieldName" select="'justificationForRequest'" />
+                </xsl:call-template>
+              </div>
+
+              <!--  OPTIONS  -->
+              <div xmlns="" id="idSwapOptions" style="display:none">
+                <h4 style="line-height:150%">If the system access required is not the same between the two users being swapped, please fill out separate request forms
+                for each, or make detailed comments below.</h4>
+                <br />
+              </div>
+
+              <div xmlns="" id="idOptions" style="display:none">
+                <h3 id="idAddApps" style="display:none">Application Access to Add</h3>
+                <h3 id="idRemoveApps" style="display:none">Application Access to Remove</h3>
+
+                <div id="idRemoveAll" style="display:none">
+                    <input name="cbRemoveAll" type="checkbox" value="removeAll">
+                      Remove All<br />
+                    </input>
+                </div>
+                <br />
+                <h4>Admission Applications</h4> <!-- eApp -->
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'eAppAdminCenter'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'eAppApprover'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+
+                <xsl:call-template name="widget">
+                  <xsl:with-param name="fieldName" select="'eAppTrainingCompleted'" />
+                </xsl:call-template>
+                <div xmlns="" id="ideAppTrainingText" style="display:none">
+                  <h5 style=""><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until traning is completed.</i></h5>
+                </div>
+
+
+                <h4>Awards and Fellowships</h4>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'fellowCanvasCourse'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'iuieAccess'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'fellowContactOnly'" />
+                    </xsl:call-template>
+              </xsl:with-param>
+            </xsl:call-template>
+
+                <h4>Bulletin</h4>
+                <xsl:call-template name="widget">
+                  <xsl:with-param name="fieldName" select="'bulletin'" />
+                </xsl:call-template>
+
+                <h4>Graduate School Student Progression eDoc Approver</h4>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'maAppAdvDeg'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'defenseAnnouncement'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'nomResCommittee'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'nomCandidacy'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'phdCommencementApp'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'secRecorder'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'dgs'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+
+                <h4>IUPUI Grad Office Roles</h4>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <!-- //TODO fill with other IUPUI stuff -->
+                    <!-- //TODO adminAssistant field id -->
+                    <!-- //TODO curriculumContact field id -->
+                    <!-- //TODO depChair field id -->
+                    <!-- //TODO gradStudiesAdv field id -->
+                    <!-- //TODO dean field id -->
+                    <!-- //TODO associateDean field id -->
+                    <!-- //TODO fiscal field id -->
+                    <!-- //TODO gradAdv field id -->
+                    <!-- //TODO gradSecretary field id -->
+                    <!-- //TODO gradRecorder field id -->
+                    <!-- //TODO recruiter field id -->
+                    <!-- //TODO newsletterRecipient field id -->
+                    <!-- //TODO other field id -->
+                  </xsl:with-param>
+                </xsl:call-template>
+              </div>
+
+            </xsl:when>
+
+            <xsl:otherwise>
+              <!--  READ ONLY OTHERWISE  -->
+              <!-- GET CAMPUS AND ADDREMOVEREPLACE -->
+              <div xmlns="" id="campusAddRemoveReplaceReadOnly">
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'campus'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addRemove'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+                <xsl:call-template name="widget">
+                  <xsl:with-param name="fieldName" select="'department'" />
+                  <xsl:with-param name="readOnly" select="'true'" />
+                </xsl:call-template>
+              </div>
+
+              <!--  GROUP OF ADD PERSON WIDGETS-->
+              <div xmlns="" id="idAddPersonReadOnly" style="display:block">
+                <h3>Add Person</h3>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addUserID'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addFirstName'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addLastName'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addJobTitle'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addCampusAddress'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addDepartmentEmail'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+              </div>
+
+              <!--  GROUP OF REMOVE PERSON WIDGETS-->
+              <div xmlns="" id="idRemovePersonReadOnly" style="display:block">
+                <h3>Remove Person</h3>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'removeUserid'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'removeFirstName'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'removeLastName'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+              </div>
+
+              <!--  OPTIONS  -->
+              <div xmlns="" id="idOptionsReadOnly" style="display:block">
+                <h3 id="idOptionsHeaderReadOnly" style="display:block">Options</h3>
+                <br />
+                <h4>eApplication</h4>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'eAppAdminCenter'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'eAppApprover'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+
+                <h4>Awards and Fellowships</h4>
+                <xsl:call-template name="widget">
+                  <xsl:with-param name="fieldName" select="'sharePoint'" />
+                  <xsl:with-param name="readOnly" select="'true'" />
+                </xsl:call-template>
+
+                <h4>Bulletin</h4>
+                <xsl:call-template name="widget">
+                  <xsl:with-param name="fieldName" select="'bulletin'" />
+                  <xsl:with-param name="readOnly" select="'true'" />
+                </xsl:call-template>
+
+                <h4>eDocs</h4>
+                <xsl:call-template name="inlineWidget">
+                  <xsl:with-param name="body">
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'maAppAdvDeg'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'defenseAnnouncement'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'nomResCommittee'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'nomCandidacy'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'phdCommencementApp'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                  </xsl:with-param>
+                </xsl:call-template>
+
+                <h4>Comments</h4>
+                <xsl:call-template name="widget">
+                  <xsl:with-param name="fieldName" select="'justificationForRequest'" />
+                  <xsl:with-param name="readOnly" select="'true'" />
+                </xsl:call-template>
+              </div>
+
+              <div xmlns="" id="idNotesFooter">
+                <!--  ******* NOTES FROM UGS PLUGIN *******   -->
+                <!--  Not available to node intiated          -->
+                <xsl:call-template name="notes">
+                </xsl:call-template>
+              </div>
+
+            </xsl:otherwise>
+
+          </xsl:choose>
+
+        </xsl:template>
+      </xsl:stylesheet></style><association><docType>UGS.AddRemoveUserRequest.Doctype</docType><definition>AddRemoveUserRequest_xml</definition><style>AddRemoveUserRequest_xsl</style><active>true</active></association></edoclite></data>
