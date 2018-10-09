@@ -599,6 +599,113 @@ function checkBrowaerCompatibility(){
         </display>
       </fieldDef>
 
+      <!--  ADMINISTRATIVE ASSISTANT  -->
+      <fieldDef name="adminAssistant" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Administrative Assistant">Administrative Assistant</values>
+        </display>
+      </fieldDef>
+
+      <!--  CURRICULUM CONTACT  -->
+      <fieldDef name="curriculumContact" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Curriculum Contact">Curriculum Contact</values>
+        </display>
+      </fieldDef>
+
+      <!--  DEPARTMENT CHAIR/DIRECTOR  -->
+      <fieldDef name="depChair" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Department Chair/Director">Department Chair/Director</values>
+        </display>
+      </fieldDef>
+
+      <!--  GRADUATE STUDIES ADVISOR  -->
+      <fieldDef name="gradStudiesAdv" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Graduate Studies Advisor">Graduate Studies Advisor</values>
+        </display>
+      </fieldDef>
+
+      <!--  DEAN  -->
+      <fieldDef name="dean" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Dean">Dean</values>
+        </display>
+      </fieldDef>
+
+      <!--  ASSOCIATE DEAN  -->
+      <fieldDef name="associateDean" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Associate Dean">Associate Dean</values>
+        </display>
+      </fieldDef>
+
+      <!--  FISCAL  -->
+      <fieldDef name="fiscal" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Fiscal">Fiscal</values>
+        </display>
+      </fieldDef>
+
+      <!--  GRADUATE ADVISOR  -->
+      <fieldDef name="gradAdv" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Graduate Advisor">Graduate Advisor</values>
+        </display>
+      </fieldDef>
+
+      <!--  GRADUATE SECRETARY  -->
+      <fieldDef name="gradSecretary" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Graduate Secretary">Graduate Secretary</values>
+        </display>
+      </fieldDef>
+
+      <!--  GRADUATE RECORDER  -->
+      <fieldDef name="gradRecorder" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Graduate Recorder">Graduate Recorder</values>
+        </display>
+      </fieldDef>
+
+      <!--  RECRUITER  -->
+      <fieldDef name="recruiter" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="Recruiter">Recruiter</values>
+        </display>
+      </fieldDef>
+
+      <!--  NEWSLETTER RECIPIENT  -->
+      <fieldDef name="newsletterRecipient" title="">
+        <display>
+          <type>checkbox</type>
+          <values title="I want to receieve the Crucial Communicator Newsletter, sent to faculty and staff regarding important information on graduate education at IUPUI.">Newsletter Recipient</values>
+        </display>
+      </fieldDef>
+
+      <!--  OTHER  -->
+      <fieldDef name="other" title="Other">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
       <!-- JUSTIFICATION   -->
       <fieldDef name="justificationForRequest" title="Enter a brief justification and any other comments (required)">
         <display>
@@ -777,9 +884,10 @@ function checkBrowaerCompatibility(){
                 <xsl:call-template name="widget">
                   <xsl:with-param name="fieldName" select="'eAppTrainingCompleted'" />
                 </xsl:call-template>
-                <div xmlns="" id="ideAppTrainingText" style="display:none">
-                  <h5 style=""><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until traning is completed.</i></h5>
+                <div xmlns="" id="ideAppTrainingText">
+                  <h5 style="width: 70%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until traning is completed.</i></h5>
                 </div>
+                <br />
 
 
                 <h4>Awards and Fellowships</h4>
@@ -828,26 +936,52 @@ function checkBrowaerCompatibility(){
                     </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
-
-                <h4>IUPUI Grad Office Roles</h4>
-                <xsl:call-template name="inlineWidget">
-                  <xsl:with-param name="body">
-                    <!-- //TODO fill with other IUPUI stuff -->
-                    <!-- //TODO adminAssistant field id -->
-                    <!-- //TODO curriculumContact field id -->
-                    <!-- //TODO depChair field id -->
-                    <!-- //TODO gradStudiesAdv field id -->
-                    <!-- //TODO dean field id -->
-                    <!-- //TODO associateDean field id -->
-                    <!-- //TODO fiscal field id -->
-                    <!-- //TODO gradAdv field id -->
-                    <!-- //TODO gradSecretary field id -->
-                    <!-- //TODO gradRecorder field id -->
-                    <!-- //TODO recruiter field id -->
-                    <!-- //TODO newsletterRecipient field id -->
-                    <!-- //TODO other field id -->
-                  </xsl:with-param>
-                </xsl:call-template>
+                <div xmlns="" id="IUPUIOptions" style="display:block;">
+                  <h4>IUPUI Graduate Office Roles</h4>
+                  <xsl:call-template name="inlineWidget">
+                    <xsl:with-param name="body">
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'adminAssistant'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'curriculumContact'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'depChair'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'gradStudiesAdv'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'dean'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'associateDean'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'fiscal'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'gradAdv'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'gradSecretary'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'gradRecorder'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'recruiter'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'newsletterRecipient'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'other'" />
+                      </xsl:call-template>
+                    </xsl:with-param>
+                  </xsl:call-template>
+                </div>
               </div>
 
             </xsl:when>
