@@ -106,6 +106,8 @@ function checkBrowserCompatibility(){
               document.getElementById("idAddPerson").style.display="none";
               document.getElementById("idRemoveApps").style.display="none";
               document.getElementById("idAddApps").style.display="none";
+              document.getElementById("idChangeApps").style.display="none";
+              document.getElementById("idBoxLink").style.display="none";
               document.getElementById("idSwapOptions").style.display="none";
               document.getElementById("idComments").style.display="none";
               document.getElementById("idOptions").style.display="none";
@@ -143,6 +145,8 @@ function checkBrowserCompatibility(){
                     document.getElementById("idAddApps").style.display="block";
                     document.getElementById("idRemoveAll").style.display="none";
                     document.getElementById("idRemoveApps").style.display="none";
+                    document.getElementById("idChangeApps").style.display="none";
+                    document.getElementById("idBoxLink").style.display="block";
                     document.getElementById("idSwapOptions").style.display="none";
                     if (campus == "IN")
                       {document.getElementById("idIUPUIOptions").style.display="block";}
@@ -167,6 +171,8 @@ function checkBrowserCompatibility(){
                     document.getElementById("idRemoveApps").style.display="block";
                     document.getElementById("idComments").style.display="block";
                     document.getElementById("idAddApps").style.display="none";
+                    document.getElementById("idChangeApps").style.display="none";
+                    document.getElementById("idBoxLink").style.display="block";
                     document.getElementById("idSwapOptions").style.display="none";
                     if (campus == "IN")
                       {document.getElementById("idIUPUIOptions").style.display="block";}
@@ -185,7 +191,9 @@ function checkBrowserCompatibility(){
                     $removeUserid.val("");
                     document.getElementById("idOptions").style.display="block";
                     document.getElementById("idComments").style.display="block";
-                    document.getElementById("idAddApps").style.display="block";
+                    document.getElementById("idChangeApps").style.display="block";
+                    document.getElementById("idBoxLink").style.display="block";
+                    document.getElementById("idAddApps").style.display="none";
                     document.getElementById("idRemoveAll").style.display="none";
                     document.getElementById("idRemoveApps").style.display="none";
                     document.getElementById("idSwapOptions").style.display="none";
@@ -213,6 +221,8 @@ function checkBrowserCompatibility(){
                     document.getElementById("idAddPerson").style.display="none";
                     document.getElementById("idRemoveApps").style.display="none";
                     document.getElementById("idAddApps").style.display="none";
+                    document.getElementById("idChangeApps").style.display="none";
+                    document.getElementById("idBoxLink").style.display="none";
                     document.getElementById("idSwapOptions").style.display="none";
                     document.getElementById("idComments").style.display="none";
                     document.getElementById("idOptions").style.display="none";
@@ -778,6 +788,10 @@ function checkBrowserCompatibility(){
           <xsl:choose>
             <xsl:when test="$docStatus = 'INITIATED'">
 
+              <div xmlns="" id="idDocInfo" style="width: 90%; margin: auto;">
+                <h4><b>This form is for university employees only.</b></h4>
+              </div>
+
               <!-- GET CAMPUS AND DEPT -->
               <div xmlns="" id="idCampusDept">
                 <xsl:call-template name="inlineWidget">
@@ -799,17 +813,15 @@ function checkBrowserCompatibility(){
                 </xsl:call-template>
               </div>
 
-              <!-- //TODO make contactONLY visible when add or change selected -->
-              <!-- //TODO reset contactOnly value wehn visibility changed -->
               <div id="idContactOnly" style="display:none;">
-                  <input name="contactOnly" id="contactOnly" type="checkbox" value="contacOnly">
+                  <input name="contactOnly" id="contactOnly" type="checkbox" value="contactOnly">
                     Contact Information Only<br />
                   </input>
               </div>
 
               <!--  GROUP OF ADD PERSON WIDGETS-->
               <div xmlns="" id="idAddPerson" style="display:none">
-                <div xmlns="" id="idAddHeader" style="display:none;">
+                <div xmlns="" id="idAddHeader" style="display:block;">
                   <h3>Add</h3>
                 </div>
                 <div xmlns="" id="idChangeHeader" style="display:none;">
@@ -881,6 +893,8 @@ function checkBrowserCompatibility(){
               <div xmlns="" id="idOptions" style="display:none">
                 <h3 id="idAddApps" style="display:none">Application Access to Add</h3>
                 <h3 id="idRemoveApps" style="display:none">Application Access to Remove</h3>
+                <h3 id="idChangeApps" style="display:none">Application Access to Change</h3>
+                <h5 id="idBoxLink" style="display:none; width: 90%; margin: auto;"><a href="">Department Groups</a></h5>
 
                 <div id="idRemoveAll" style="display:none">
                     <input name="cbRemoveAll" type="checkbox" value="removeAll">
