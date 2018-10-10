@@ -17,6 +17,7 @@
               $('#campus').change(resetForm);
               $('#department').change(showAddRemove)
               $('#cbRemoveAll').change(updateAll)
+              $('#contactOnly').change(ToggleContactOnly)
             }
 
 
@@ -100,6 +101,7 @@ function checkBrowserCompatibility(){
               $addJobTitle.val("");
               $addCampusAddress.val("");
               $addDepartmentEmail.val("");
+              document.getElementById("idContactOnly").style.display="none";
               document.getElementById("idRemovePerson").style.display="none";
               document.getElementById("idAddPerson").style.display="none";
               document.getElementById("idRemoveApps").style.display="none";
@@ -122,11 +124,16 @@ function checkBrowserCompatibility(){
                var $addJobTitle = $('#addJobTitle');
                var $addCampusAddress = $('#addCampusAddress');
                var $addDepartmentEmail = $('#addDepartmentEmail');
+               var $contactOnly = $('#contactOnly');
 
                switch (addRemoveReplace)
                {
                   case "add":
                     document.getElementById("idAddPerson").style.display="block";
+                    document.getElementById("idAddHeader").style.display="block";
+                    document.getElementById("idChangeHeader").style.display="none";
+                    document.getElementById("idContactOnly").style.display="block";
+                    $contactOnly.prop('checked', false);
                     document.getElementById("idRemovePerson").style.display="none";
                     $removeFirstName.val("");
                     $removeLastName.val("");
@@ -145,6 +152,10 @@ function checkBrowserCompatibility(){
                   case "remove":
                     document.getElementById("idRemovePerson").style.display="block";
                     document.getElementById("idAddPerson").style.display="none";
+                    document.getElementById("idAddHeader").style.display="none";
+                    document.getElementById("idChangeHeader").style.display="none";
+                    document.getElementById("idContactOnly").style.display="block";
+                    $contactOnly.prop('checked', false);
                     document.getElementById("idRemoveAll").style.display="block";
                     $addFirstName.val("");
                     $addLastName.val("");
@@ -162,9 +173,33 @@ function checkBrowserCompatibility(){
                     else
                       {document.getElementById("idIUPUIOptions").style.display="none";}
                     break;
+                  case "change":
+                    document.getElementById("idAddPerson").style.display="block";
+                    document.getElementById("idAddHeader").style.display="none";
+                    document.getElementById("idChangeHeader").style.display="block";
+                    document.getElementById("idContactOnly").style.display="block";
+                    $contactOnly.prop('checked', false);
+                    document.getElementById("idRemovePerson").style.display="none";
+                    $removeFirstName.val("");
+                    $removeLastName.val("");
+                    $removeUserid.val("");
+                    document.getElementById("idOptions").style.display="block";
+                    document.getElementById("idComments").style.display="block";
+                    document.getElementById("idAddApps").style.display="block";
+                    document.getElementById("idRemoveAll").style.display="none";
+                    document.getElementById("idRemoveApps").style.display="none";
+                    document.getElementById("idSwapOptions").style.display="none";
+                    if (campus == "IN")
+                      {document.getElementById("idIUPUIOptions").style.display="block";}
+                    else
+                      {document.getElementById("idIUPUIOptions").style.display="none";}
+                    break;
                   case "replace":
                     document.getElementById("idRemovePerson").style.display="block";
                     document.getElementById("idAddPerson").style.display="block";
+                    document.getElementById("idAddHeader").style.display="blcok";
+                    document.getElementById("idChangeHeader").style.display="none";
+                    document.getElementById("idContactOnly").style.display="none";
                     document.getElementById("idComments").style.display="block";
                     document.getElementById("idOptions").style.display="none";
                     document.getElementById("idSwapOptions").style.display="block";
@@ -183,6 +218,23 @@ function checkBrowserCompatibility(){
                     document.getElementById("idOptions").style.display="none";
                }
 
+              }
+
+              function ToggleContactOnly() {
+                console.log("Toggle Contact Only");
+                if(document.getElementById("contactOnly").checked) {
+                  console.log("Toggle Checked");
+                  document.getElementById("idOptions").style.display="none";
+                  document.getElementById("idIUPUIOptions").style.display="none";
+                }
+                else {
+                  console.log("Toggle Unchecked");
+                  document.getElementById("idOptions").style.display="block";
+                  if (campus == "IN")
+                    {document.getElementById("idIUPUIOptions").style.display="block";}
+                  else
+                    {document.getElementById("idIUPUIOptions").style.display="none";}
+                }
               }
 
               //Alt method for getting departments here
@@ -264,7 +316,7 @@ function checkBrowserCompatibility(){
 
       <!-- *******  FIELDDEFS *******       -->
 
-      <!-- ADD/REMOVE/REPLACE -->
+      <!-- ADD/REMOVE/REPLACE/CHANGE? -->
       <fieldDef name="addRemove" title="Would you like to add, remove or replace a user?">
         <display>
           <type>select</type>
@@ -273,8 +325,9 @@ function checkBrowserCompatibility(){
             <value>4</value>
           </meta>
           <values title="**Please Select**" />
-          <values title="Add Only">add</values>
-          <values title="Remove Only">remove</values>
+          <values title="Add">add</values>
+          <values title="Remove">remove</values>
+          <values title="Change">change</values>
           <values title="Replace (swap)">replace</values>
         </display>
         <validation required="true" />
@@ -746,9 +799,23 @@ function checkBrowserCompatibility(){
                 </xsl:call-template>
               </div>
 
+              <!-- //TODO make contactONLY visible when add or change selected -->
+              <!-- //TODO reset contactOnly value wehn visibility changed -->
+              <div id="idContactOnly" style="display:none;">
+                  <input name="contactOnly" id="contactOnly" type="checkbox" value="contacOnly">
+                    Contact Information Only<br />
+                  </input>
+              </div>
+
               <!--  GROUP OF ADD PERSON WIDGETS-->
               <div xmlns="" id="idAddPerson" style="display:none">
-                <h3>Add Person</h3>
+                <div xmlns="" id="idAddHeader" style="display:none;">
+                  <h3>Add</h3>
+                </div>
+                <div xmlns="" id="idChangeHeader" style="display:none;">
+                  <h3>Change</h3>
+                </div>
+
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
@@ -780,7 +847,7 @@ function checkBrowserCompatibility(){
 
               <!--  GROUP OF REMOVE PERSON WIDGETS-->
               <div xmlns="" id="idRemovePerson" style="display:none">
-                <h3>Remove Person</h3>
+                <h3>Remove</h3>
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
@@ -964,7 +1031,7 @@ function checkBrowserCompatibility(){
 
               <!--  GROUP OF ADD PERSON WIDGETS-->
               <div xmlns="" id="idAddPersonReadOnly" style="display:block">
-                <h3>Add Person</h3>
+                <h3>Add</h3>
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
@@ -1002,7 +1069,7 @@ function checkBrowserCompatibility(){
 
               <!--  GROUP OF REMOVE PERSON WIDGETS-->
               <div xmlns="" id="idRemovePersonReadOnly" style="display:block">
-                <h3>Remove Person</h3>
+                <h3>Remove</h3>
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
