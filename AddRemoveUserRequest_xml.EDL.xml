@@ -894,7 +894,7 @@ function checkBrowserCompatibility(){
                 <h3 id="idAddApps" style="display:none">Application Access to Add</h3>
                 <h3 id="idRemoveApps" style="display:none">Application Access to Remove</h3>
                 <h3 id="idChangeApps" style="display:none">Application Access to Change</h3>
-                <h5 id="idBoxLink" style="display:none; width: 90%; margin: auto;"><a href="">Department Groups</a></h5>
+                <h5 id="idBoxLink" style="display:none; width: 90%; margin: auto;"><a href="https://iu.app.box.com/v/ugsedocs">On Box you can find reports showing all current group memberships for your program as well as an enroute eDoc list.</a></h5>
 
                 <div id="idRemoveAll" style="display:none">
                     <input name="cbRemoveAll" type="checkbox" value="removeAll">
@@ -918,7 +918,7 @@ function checkBrowserCompatibility(){
                   <xsl:with-param name="fieldName" select="'eAppTrainingCompleted'" />
                 </xsl:call-template>
                 <div xmlns="" id="ideAppTrainingText">
-                  <h5 style="width: 70%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until traning is completed.</i></h5>
+                  <h5 style="width: 90%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until traning is completed.</i></h5>
                 </div>
                 <br />
 
