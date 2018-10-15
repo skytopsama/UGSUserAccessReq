@@ -205,7 +205,7 @@ function checkBrowserCompatibility(){
                   case "replace":
                     document.getElementById("idRemovePerson").style.display="block";
                     document.getElementById("idAddPerson").style.display="block";
-                    document.getElementById("idAddHeader").style.display="blcok";
+                    document.getElementById("idAddHeader").style.display="block";
                     document.getElementById("idChangeHeader").style.display="none";
                     document.getElementById("idContactOnly").style.display="none";
                     document.getElementById("idComments").style.display="block";
@@ -429,6 +429,20 @@ function checkBrowserCompatibility(){
         </display>
       </fieldDef>
 
+      <fieldDef name="addCampusPhone" title="Campus Phone">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>maxlength</name>
+            <value>25</value>
+          </meta>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
       <fieldDef name="addDepartmentEmail" title="Department Email">
         <display>
           <type>text</type>
@@ -550,11 +564,11 @@ function checkBrowserCompatibility(){
         </display>
       </fieldDef>
 
-      <!-- eAPP TRANING COMPLETED   -->
+      <!-- eAPP TRAINING COMPLETED   -->
       <fieldDef name="eAppTrainingCompleted" title="">
         <display>
           <type>checkbox</type>
-          <values title="eApp Traning Completed">eApp Traning Completed</values>
+          <values title="eApp Training Completed">eApp Training Completed</values>
         </display>
       </fieldDef>
 
@@ -562,7 +576,7 @@ function checkBrowserCompatibility(){
       <fieldDef name="maAppAdvDeg" title="">
         <display>
           <type>checkbox</type>
-          <values title="Application and Recommendation for Advanced Degree">Master's Application and Recommendation for Advanced Degree</values>
+          <values title="Master's Application and Recommendation for Advanced Degree">Master's Application and Recommendation for Advanced Degree</values>
         </display>
       </fieldDef>
 
@@ -853,6 +867,9 @@ function checkBrowserCompatibility(){
                     <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'addDepartmentEmail'" />
                     </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addCampusPhone'" />
+                    </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
               </div>
@@ -894,7 +911,7 @@ function checkBrowserCompatibility(){
                 <h3 id="idAddApps" style="display:none">Application Access to Add</h3>
                 <h3 id="idRemoveApps" style="display:none">Application Access to Remove</h3>
                 <h3 id="idChangeApps" style="display:none">Application Access to Change</h3>
-                <h5 id="idBoxLink" style="display:none; width: 90%; margin: auto;"><a href="https://iu.app.box.com/v/ugsedocs">On Box you can find reports showing all current group memberships for your program as well as an enroute eDoc list.</a></h5>
+                <h5 id="idBoxLink" style="display:none; width: 90%; margin: auto;"><a href="https://iu.app.box.com/v/ugsedocs" target="_blank">In Box you can find reports showing all current eDoc workflow memberships for your program as well as an enroute eDoc list.</a></h5>
 
                 <div id="idRemoveAll" style="display:none">
                     <input name="cbRemoveAll" type="checkbox" value="removeAll">
@@ -918,7 +935,7 @@ function checkBrowserCompatibility(){
                   <xsl:with-param name="fieldName" select="'eAppTrainingCompleted'" />
                 </xsl:call-template>
                 <div xmlns="" id="ideAppTrainingText">
-                  <h5 style="width: 90%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until traning is completed.</i></h5>
+                  <h5 style="width: 90%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until training is completed.</i></h5>
                 </div>
                 <br />
 
@@ -942,8 +959,11 @@ function checkBrowserCompatibility(){
                 <xsl:call-template name="widget">
                   <xsl:with-param name="fieldName" select="'bulletin'" />
                 </xsl:call-template>
+                <div xmlns="" id="idBulletinText">
+                  <h5 style="width: 90%; margin: auto;"><i>For IU Graduate School Programs only</i></h5>
+                </div>
 
-                <h4>Graduate School Student Progression eDoc Approver</h4>
+                <h4>IU Graduate School Student Progression eDoc Approver</h4>
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
@@ -1077,6 +1097,10 @@ function checkBrowserCompatibility(){
                       <xsl:with-param name="fieldName" select="'addDepartmentEmail'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'addCampusPhone'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
               </div>
@@ -1132,7 +1156,7 @@ function checkBrowserCompatibility(){
                   <xsl:with-param name="readOnly" select="'true'" />
                 </xsl:call-template>
                 <div xmlns="" id="ideAppTrainingText">
-                  <h5 style="width: 70%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until traning is completed.</i></h5>
+                  <h5 style="width: 70%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until training is completed.</i></h5>
                 </div>
                 <br />
 
@@ -1159,8 +1183,11 @@ function checkBrowserCompatibility(){
                   <xsl:with-param name="fieldName" select="'bulletin'" />
                   <xsl:with-param name="readOnly" select="'true'" />
                 </xsl:call-template>
+                <div xmlns="" id="idBulletinText">
+                  <h5 style="width: 90%; margin: auto;"><i>For IU Graduate School Programs only</i></h5>
+                </div>
 
-                <h4>Graduate School Student Progression eDoc Approver</h4>
+                <h4>IU Graduate School Student Progression eDoc Approver</h4>
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
