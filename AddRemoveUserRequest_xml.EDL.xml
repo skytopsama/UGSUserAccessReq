@@ -126,7 +126,22 @@ function checkBrowserCompatibility(){
                var $addJobTitle = $('#addJobTitle');
                var $addCampusAddress = $('#addCampusAddress');
                var $addDepartmentEmail = $('#addDepartmentEmail');
+               var $justificationForRequest = $('#justificationForRequest');
                var $contactOnly = $('#contactOnly');
+               var $eAppAdminCenter = $('#eAppAdminCenter');
+               $addFirstName.val("");
+               $addLastName.val("");
+               $addUserID.val("");
+               $addJobTitle.val("");
+               $addCampusAddress.val("");
+               $addDepartmentEmail.val("");
+               $removeFirstName.val("");
+               $removeLastName.val("");
+               $removeUserid.val("");
+               $justificationForRequest.val("");
+               $contactOnly.prop('checked', false);
+               $eAppAdminCenter.prop('checked', false);
+               $bulletin.prop('checked', false);
 
                switch (addRemoveReplace)
                {
@@ -135,11 +150,7 @@ function checkBrowserCompatibility(){
                     document.getElementById("idAddHeader").style.display="block";
                     document.getElementById("idChangeHeader").style.display="none";
                     document.getElementById("idContactOnly").style.display="block";
-                    $contactOnly.prop('checked', false);
                     document.getElementById("idRemovePerson").style.display="none";
-                    $removeFirstName.val("");
-                    $removeLastName.val("");
-                    $removeUserid.val("");
                     document.getElementById("idOptions").style.display="block";
                     document.getElementById("idComments").style.display="block";
                     document.getElementById("idAddApps").style.display="block";
@@ -159,14 +170,7 @@ function checkBrowserCompatibility(){
                     document.getElementById("idAddHeader").style.display="none";
                     document.getElementById("idChangeHeader").style.display="none";
                     document.getElementById("idContactOnly").style.display="block";
-                    $contactOnly.prop('checked', false);
                     document.getElementById("idRemoveAll").style.display="block";
-                    $addFirstName.val("");
-                    $addLastName.val("");
-                    $addUserID.val("");
-                    $addJobTitle.val("");
-                    $addCampusAddress.val("");
-                    $addDepartmentEmail.val("");
                     document.getElementById("idOptions").style.display="block";
                     document.getElementById("idRemoveApps").style.display="block";
                     document.getElementById("idComments").style.display="block";
@@ -184,11 +188,7 @@ function checkBrowserCompatibility(){
                     document.getElementById("idAddHeader").style.display="none";
                     document.getElementById("idChangeHeader").style.display="block";
                     document.getElementById("idContactOnly").style.display="block";
-                    $contactOnly.prop('checked', false);
                     document.getElementById("idRemovePerson").style.display="none";
-                    $removeFirstName.val("");
-                    $removeLastName.val("");
-                    $removeUserid.val("");
                     document.getElementById("idOptions").style.display="block";
                     document.getElementById("idComments").style.display="block";
                     document.getElementById("idChangeApps").style.display="block";
@@ -552,6 +552,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="eAppAdminCenter" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>id</name>
+            <value>eAppAdminCenter</value>
+          </meta>
           <values title="Admin Center">eApp Admin Center</values>
         </display>
       </fieldDef>
@@ -772,7 +776,7 @@ function checkBrowserCompatibility(){
         <xsl:variable name="docStatus" select="//documentState/workflowDocumentState/status" />
 
         <xsl:template name="mainBody">
-          <script xmlns="" type="text/javascript">checkBrowaerCompatibility();</script>
+          <script xmlns="" type="text/javascript">checkBrowserCompatibility();</script>
 
           <script xmlns="" type="text/javascript">
             var $currentNode = '<xsl:value-of select="$currentNode" />';
@@ -935,7 +939,7 @@ function checkBrowserCompatibility(){
                   <xsl:with-param name="fieldName" select="'eAppTrainingCompleted'" />
                 </xsl:call-template>
                 <div xmlns="" id="ideAppTrainingText">
-                  <h5 style="width: 90%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until training is completed.</i></h5>
+                  <h5 style="width: 90%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sale (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until training is completed.</i></h5>
                 </div>
                 <br />
 
@@ -1156,7 +1160,7 @@ function checkBrowserCompatibility(){
                   <xsl:with-param name="readOnly" select="'true'" />
                 </xsl:call-template>
                 <div xmlns="" id="ideAppTrainingText">
-                  <h5 style="width: 70%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sales (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until training is completed.</i></h5>
+                  <h5 style="width: 70%; margin: auto;"><i>Contact Judy Post (Bloomington) or Anita Sale (IUPUI) if you are unsure or have not completed the training. eApp approval access will not be granted until training is completed.</i></h5>
                 </div>
                 <br />
 
