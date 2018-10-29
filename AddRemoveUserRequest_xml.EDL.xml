@@ -72,10 +72,39 @@ function checkBrowserCompatibility(){
               $('#addText').val('');
           }
 
-          function updateAll()
-          {
+          function updateAll() {
+            var trigger = $('#cbRemoveAll').prop('checked');
+            //console.log(trigger)
+            var optionList = document.getElementById("idOptions").getElementsByTagName("input");
+            var i;
+            var $otherInput = $('#other')
 
-
+            switch (trigger)
+            {
+              case true:
+                for (i = 0; i < optionList.length; i++) {
+                  if (optionList[i].type == "checkbox" && optionList[i].name != "cbRemoveAll") {
+                    optionList[i].checked = true;
+                  }
+                }
+                break;
+              case false:
+                $otherInput.val("")
+                for (i = 0; i < optionList.length; i++) {
+                  if (optionList[i].type == "checkbox" && optionList[i].name != "cbRemoveAll") {
+                    optionList[i].checked = false;
+                  }
+                }
+                break;
+              default:
+                //console.log("UpdateAll default case")
+                $otherInput.val("")
+                for (i = 0; i < optionList.length; i++) {
+                  if (optionList[i].type == "checkbox" && optionList[i].name != "cbRemoveAll") {
+                    optionList[i].checked = false;
+                  }
+                }
+            }
           }
 
 
@@ -101,6 +130,8 @@ function checkBrowserCompatibility(){
               $addJobTitle.val("");
               $addCampusAddress.val("");
               $addDepartmentEmail.val("");
+              $('#cbRemoveAll').prop('checked', false);
+              updateAll();
               document.getElementById("idContactOnly").style.display="none";
               document.getElementById("idRemovePerson").style.display="none";
               document.getElementById("idAddPerson").style.display="none";
@@ -128,7 +159,7 @@ function checkBrowserCompatibility(){
                var $addDepartmentEmail = $('#addDepartmentEmail');
                var $justificationForRequest = $('#justificationForRequest');
                var $contactOnly = $('#contactOnly');
-               var $eAppAdminCenter = $('#eAppAdminCenter');
+               var $removeAll = $('#cbRemoveAll');
                $addFirstName.val("");
                $addLastName.val("");
                $addUserID.val("");
@@ -140,8 +171,9 @@ function checkBrowserCompatibility(){
                $removeUserid.val("");
                $justificationForRequest.val("");
                $contactOnly.prop('checked', false);
-               $eAppAdminCenter.prop('checked', false);
-               $bulletin.prop('checked', false);
+               $removeAll.prop('checked', false);
+               updateAll();
+
 
                switch (addRemoveReplace)
                {
@@ -231,19 +263,25 @@ function checkBrowserCompatibility(){
               }
 
               function ToggleContactOnly() {
-                console.log("Toggle Contact Only");
+                //console.log("Toggle Contact Only");
+                var campus = $('#campus').val();
                 if(document.getElementById("contactOnly").checked) {
                   console.log("Toggle Checked");
                   document.getElementById("idOptions").style.display="none";
                   document.getElementById("idIUPUIOptions").style.display="none";
+                  $('#cbRemoveAll').prop('checked', false);
+                  updateAll();
                 }
                 else {
                   console.log("Toggle Unchecked");
                   document.getElementById("idOptions").style.display="block";
-                  if (campus == "IN")
-                    {document.getElementById("idIUPUIOptions").style.display="block";}
-                  else
-                    {document.getElementById("idIUPUIOptions").style.display="none";}
+                  if (campus == "IN") {
+                  console.log("IN Options Visible")
+                    document.getElementById("idIUPUIOptions").style.display="block";
+                  }
+                  else {
+                    document.getElementById("idIUPUIOptions").style.display="none";
+                  }
                 }
               }
 
@@ -552,10 +590,6 @@ function checkBrowserCompatibility(){
       <fieldDef name="eAppAdminCenter" title="">
         <display>
           <type>checkbox</type>
-          <meta>
-            <name>id</name>
-            <value>eAppAdminCenter</value>
-          </meta>
           <values title="Admin Center">eApp Admin Center</values>
         </display>
       </fieldDef>
@@ -918,7 +952,7 @@ function checkBrowserCompatibility(){
                 <h5 id="idBoxLink" style="display:none; width: 90%; margin: auto;"><a href="https://iu.app.box.com/v/ugsedocs" target="_blank">In Box you can find reports showing all current eDoc workflow memberships for your program as well as an enroute eDoc list.</a></h5>
 
                 <div id="idRemoveAll" style="display:none">
-                    <input name="cbRemoveAll" type="checkbox" value="removeAll">
+                    <input name="cbRemoveAll" id="cbRemoveAll" type="checkbox" value="removeAll">
                       Remove All<br />
                     </input>
                 </div>
