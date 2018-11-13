@@ -1303,6 +1303,7 @@ function checkBrowserCompatibility(){
                 <!-- Function Designation (Role) Options -->
                 <div xmlns="" id="idRoleOptions" style="display:none;">
                   <h4>Function Designations</h4>
+                  <h5 style="width: 90%; margin: auto;"><i>Check all that apply.</i></h5>
                   <xsl:call-template name="inlineWidget">
                     <xsl:with-param name="body">
                       <xsl:call-template name="widget">
