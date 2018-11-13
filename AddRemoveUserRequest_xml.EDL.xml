@@ -400,17 +400,39 @@ function checkBrowserCompatibility(){
         <validation required="true" />
       </fieldDef>
 
+      <!-- SCHOOL -->
+      <fieldDef name="school" title="School">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
+      </fieldDef>
+
       <!--  DEPARTMENT   -->
-      <fieldDef attributeName="UGSAddRemoveDeptAttribute" name="department" title="School/Department">
+      <fieldDef attributeName="UGSAddRemoveDeptAttribute" name="department" title="Department">
         <display>
           <type>select</type>
           <meta>
             <name>size</name>
             <value>3</value>
           </meta>
-          <values title="**Please Select Department/School**">select</values>
+          <values title="**Please Select Department**">select</values>
         </display>
         <validation required="true" />
+      </fieldDef>
+
+      <!-- SCHOOL -->
+      <fieldDef name="program" title="Program or Major">
+        <display>
+          <type>text</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
+        </display>
       </fieldDef>
 
       <!-- ADD PERSON -->
@@ -1094,7 +1116,13 @@ function checkBrowserCompatibility(){
                       <xsl:with-param name="fieldName" select="'campus'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'school'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'department'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'program'" />
                     </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
@@ -1369,14 +1397,22 @@ function checkBrowserCompatibility(){
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'school'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'department'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'program'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'addRemove'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                   </xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="widget">
-                  <xsl:with-param name="fieldName" select="'department'" />
-                  <xsl:with-param name="readOnly" select="'true'" />
                 </xsl:call-template>
               </div>
 
