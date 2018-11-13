@@ -121,7 +121,7 @@ function checkBrowserCompatibility(){
               var $addUserID = $('#addUserID');
               var $addJobTitle = $('#addJobTitle');
               var $addCampusAddress = $('#addCampusAddress');
-              var $addDepartmentEmail = $('#addDepartmentEmail');
+              var $addIUEmail = $('#addIUEmail');
               $addRemoveReplace.val("Select");
               $school.val("");
               $program.val("");
@@ -133,7 +133,7 @@ function checkBrowserCompatibility(){
               $addUserID.val("");
               $addJobTitle.val("");
               $addCampusAddress.val("");
-              $addDepartmentEmail.val("");
+              $addIUEmail.val("");
               $('#cbRemoveAll').prop('checked', false);
               updateAll();
               document.getElementById("idContactOnly").style.display="none";
@@ -160,7 +160,7 @@ function checkBrowserCompatibility(){
                var $addUserID = $('#addUserID');
                var $addJobTitle = $('#addJobTitle');
                var $addCampusAddress = $('#addCampusAddress');
-               var $addDepartmentEmail = $('#addDepartmentEmail');
+               var $addIUEmail = $('#addIUEmail');
                var $justificationForRequest = $('#justificationForRequest');
                var $contactOnly = $('#contactOnly');
                var $removeAll = $('#cbRemoveAll');
@@ -169,7 +169,7 @@ function checkBrowserCompatibility(){
                $addUserID.val("");
                $addJobTitle.val("");
                $addCampusAddress.val("");
-               $addDepartmentEmail.val("");
+               $addIUEmail.val("");
                $removeFirstName.val("");
                $removeLastName.val("");
                $removeUserid.val("");
@@ -511,7 +511,7 @@ function checkBrowserCompatibility(){
         </display>
       </fieldDef>
 
-      <fieldDef name="addDepartmentEmail" title="Department Email">
+      <fieldDef name="addIUEmail" title="IU Email">
         <display>
           <type>text</type>
           <meta>
@@ -616,7 +616,7 @@ function checkBrowserCompatibility(){
             <name>size</name>
             <value>1</value>
           </meta>
-          <values title="Fellow Contact Only">Fellow Contact Only</values>
+          <values title="Receive Fellowship Information">Fellow Contact Only</values>
         </display>
       </fieldDef>
 
@@ -1177,7 +1177,7 @@ function checkBrowserCompatibility(){
                       <xsl:with-param name="fieldName" select="'addCampusAddress'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addDepartmentEmail'" />
+                      <xsl:with-param name="fieldName" select="'addIUEmail'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'addCampusPhone'" />
@@ -1451,7 +1451,7 @@ function checkBrowserCompatibility(){
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addDepartmentEmail'" />
+                      <xsl:with-param name="fieldName" select="'addIUEmail'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
