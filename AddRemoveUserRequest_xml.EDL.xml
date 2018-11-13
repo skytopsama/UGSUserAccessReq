@@ -111,6 +111,8 @@ function checkBrowserCompatibility(){
 
           function resetForm(){
               var $addRemoveReplace = $('#addRemove');
+              var $school = $('#school');
+              var $program = $('#program');
               var $removeFirstName = $('#removeFirstName');
               var $removeLastName = $('#removeLastName');
               var $removeUserid = $('#removeUserid');
@@ -121,6 +123,8 @@ function checkBrowserCompatibility(){
               var $addCampusAddress = $('#addCampusAddress');
               var $addDepartmentEmail = $('#addDepartmentEmail');
               $addRemoveReplace.val("Select");
+              $school.val("");
+              $program.val("");
               $removeFirstName.val("");
               $removeLastName.val("");
               $removeUserid.val("");
