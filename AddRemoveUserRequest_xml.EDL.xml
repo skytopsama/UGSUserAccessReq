@@ -191,10 +191,11 @@ function checkBrowserCompatibility(){
                     document.getElementById("idChangeApps").style.display="none";
                     document.getElementById("idBoxLink").style.display="block";
                     document.getElementById("idSwapOptions").style.display="none";
-                    if (campus == "IN")
-                      {document.getElementById("idIUPUIOptions").style.display="block";}
+                    document.getElementById("idRoleOptions").style.display="block";
+                    /*if (campus == "IN")
+                      {document.getElementById("idRoleOptions").style.display="block";}
                     else
-                      {document.getElementById("idIUPUIOptions").style.display="none";}
+                      {document.getElementById("idRoleOptions").style.display="none";}*/
                     break;
                   case "remove":
                     document.getElementById("idRemovePerson").style.display="block";
@@ -210,10 +211,11 @@ function checkBrowserCompatibility(){
                     document.getElementById("idChangeApps").style.display="none";
                     document.getElementById("idBoxLink").style.display="block";
                     document.getElementById("idSwapOptions").style.display="none";
-                    if (campus == "IN")
-                      {document.getElementById("idIUPUIOptions").style.display="block";}
+                    document.getElementById("idRoleOptions").style.display="block";
+                    /*if (campus == "IN")
+                      {document.getElementById("idRoleOptions").style.display="block";}
                     else
-                      {document.getElementById("idIUPUIOptions").style.display="none";}
+                      {document.getElementById("idRoleOptions").style.display="none";}*/
                     break;
                   case "change":
                     document.getElementById("idAddPerson").style.display="block";
@@ -229,10 +231,11 @@ function checkBrowserCompatibility(){
                     document.getElementById("idRemoveAll").style.display="none";
                     document.getElementById("idRemoveApps").style.display="none";
                     document.getElementById("idSwapOptions").style.display="none";
-                    if (campus == "IN")
-                      {document.getElementById("idIUPUIOptions").style.display="block";}
+                    document.getElementById("idRoleOptions").style.display="block";
+                    /*if (campus == "IN")
+                      {document.getElementById("idRoleOptions").style.display="block";}
                     else
-                      {document.getElementById("idIUPUIOptions").style.display="none";}
+                      {document.getElementById("idRoleOptions").style.display="none";}*/
                     break;
                   case "replace":
                     document.getElementById("idRemovePerson").style.display="block";
@@ -268,20 +271,21 @@ function checkBrowserCompatibility(){
                 if(document.getElementById("contactOnly").checked) {
                   console.log("Toggle Checked");
                   document.getElementById("idOptions").style.display="none";
-                  document.getElementById("idIUPUIOptions").style.display="none";
+                  document.getElementById("idRoleOptions").style.display="none";
                   $('#cbRemoveAll').prop('checked', false);
                   updateAll();
                 }
                 else {
                   console.log("Toggle Unchecked");
                   document.getElementById("idOptions").style.display="block";
-                  if (campus == "IN") {
+                  document.getElementById("idRoleOptions").style.display="block";
+                  /*if (campus == "IN") {
                   console.log("IN Options Visible")
-                    document.getElementById("idIUPUIOptions").style.display="block";
+                    document.getElementById("idRoleOptions").style.display="block";
                   }
                   else {
-                    document.getElementById("idIUPUIOptions").style.display="none";
-                  }
+                    document.getElementById("idRoleOptions").style.display="none";
+                  }*/
                 }
               }
 
@@ -558,6 +562,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="fellowCanvasCourse" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Awards and Fellowships Canvas Course">Awards and Fellowships Canvas Course</values>
         </display>
       </fieldDef>
@@ -566,6 +574,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="iuieAccess" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="IUIE Access">IUIE Access</values>
         </display>
       </fieldDef>
@@ -574,15 +586,11 @@ function checkBrowserCompatibility(){
       <fieldDef name="fellowContactOnly" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Fellow Contact Only">Fellow Contact Only</values>
-        </display>
-      </fieldDef>
-
-      <!-- BULLETIN CONTACT   -->
-      <fieldDef name="bulletin" title="">
-        <display>
-          <type>checkbox</type>
-          <values title="Bulletin contact">Bulletin contact</values>
         </display>
       </fieldDef>
 
@@ -590,6 +598,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="eAppAdminCenter" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
           <values title="Admin Center">eApp Admin Center</values>
         </display>
       </fieldDef>
@@ -598,6 +610,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="eAppApprover" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
           <values title="eApp Approver">eApp Approver</values>
         </display>
       </fieldDef>
@@ -606,6 +622,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="eAppTrainingCompleted" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
           <values title="eApp Training Completed">eApp Training Completed</values>
         </display>
       </fieldDef>
@@ -614,6 +634,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="maAppAdvDeg" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>3</value>
+          </meta>
           <values title="Master's Application and Recommendation for Advanced Degree">Master's Application and Recommendation for Advanced Degree</values>
         </display>
       </fieldDef>
@@ -622,6 +646,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="phdCommencementApp" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>3</value>
+          </meta>
           <values title=" Ph.D. Commencement Participation (coming to IUPUI soon)">Ph.D.Commencement Participation Application</values>
         </display>
       </fieldDef>
@@ -630,6 +658,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="defenseAnnouncement" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
           <values title="Defense Announcement">Defense Announcement</values>
         </display>
       </fieldDef>
@@ -638,6 +670,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="nomResCommittee" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
           <values title="Nomination of Research Committee">Nomination of Research Committee</values>
         </display>
       </fieldDef>
@@ -646,6 +682,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="nomCandidacy" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
           <values title="Nomination to Candidacy">Nomination to Candidacy</values>
         </display>
       </fieldDef>
@@ -654,23 +694,85 @@ function checkBrowserCompatibility(){
       <fieldDef name="secRecorder" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Secretary Recorder">Secretary Recorder</values>
         </display>
       </fieldDef>
 
-      <!--  SECRETARY RECORDER  -->
+      <!--  DGS  -->
       <fieldDef name="dgs" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="DGS">DGS</values>
         </display>
       </fieldDef>
+
+      <!--*** FUNCTION DESIGNATIONS ***-->
 
       <!--  ADMINISTRATIVE ASSISTANT  -->
       <fieldDef name="adminAssistant" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Administrative Assistant">Administrative Assistant</values>
+        </display>
+      </fieldDef>
+
+      <!--  ADMISSIONS  -->
+      <fieldDef name="admissions" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="Admissions">Admissions</values>
+        </display>
+      </fieldDef>
+
+      <!-- BULLETIN CONTACT   -->
+      <fieldDef name="bulletin" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="Bulletin contact">Bulletin contact</values>
+        </display>
+      </fieldDef>
+
+      <!-- BULLETIN REVISIONS   -->
+      <fieldDef name="bulletinRev" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="Bulletin Revisions">Bulletin Revisions</values>
+        </display>
+      </fieldDef>
+
+      <!-- CIC FreeApp   -->
+      <fieldDef name="cicFreeApp" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="CIC FreeApp">CIC FreeApp</values>
         </display>
       </fieldDef>
 
@@ -678,6 +780,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="curriculumContact" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Curriculum Contact">Curriculum Contact</values>
         </display>
       </fieldDef>
@@ -686,15 +792,35 @@ function checkBrowserCompatibility(){
       <fieldDef name="depChair" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Department Chair/Director">Department Chair/Director</values>
         </display>
       </fieldDef>
 
-      <!--  GRADUATE STUDIES ADVISOR  -->
-      <fieldDef name="gradStudiesAdv" title="">
+      <!-- DIR GRAD STUDIES   -->
+      <fieldDef name="dirGradStudies" title="">
         <display>
           <type>checkbox</type>
-          <values title="Graduate Studies Advisor">Graduate Studies Advisor</values>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="Dir Grad Studies">Dir Grad Studies</values>
+        </display>
+      </fieldDef>
+
+      <!--  DIVERSITY RELATIONS  -->
+      <fieldDef name="diversityRelations" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="Diversity Relations">Diversity Relations</values>
         </display>
       </fieldDef>
 
@@ -702,6 +828,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="dean" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Dean">Dean</values>
         </display>
       </fieldDef>
@@ -710,6 +840,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="associateDean" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Associate Dean">Associate Dean</values>
         </display>
       </fieldDef>
@@ -718,6 +852,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="fiscal" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Fiscal">Fiscal</values>
         </display>
       </fieldDef>
@@ -726,6 +864,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="gradAdv" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Graduate Advisor">Graduate Advisor</values>
         </display>
       </fieldDef>
@@ -734,6 +876,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="gradSecretary" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Graduate Secretary">Graduate Secretary</values>
         </display>
       </fieldDef>
@@ -742,7 +888,47 @@ function checkBrowserCompatibility(){
       <fieldDef name="gradRecorder" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Graduate Recorder">Graduate Recorder</values>
+        </display>
+      </fieldDef>
+
+      <!--  IU ADMINISTRATOR  -->
+      <fieldDef name="iuAdmin" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="IU Administrator">IU Administrator</values>
+        </display>
+      </fieldDef>
+
+      <!--  NRC CONTACT  -->
+      <fieldDef name="nrcContact" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="NRC Contact">NRC Contact</values>
+        </display>
+      </fieldDef>
+
+      <!--  POSTDOC  -->
+      <fieldDef name="postdoc" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="Postdoc">Postdoc</values>
         </display>
       </fieldDef>
 
@@ -750,7 +936,59 @@ function checkBrowserCompatibility(){
       <fieldDef name="recruiter" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
           <values title="Recruiter">Recruiter</values>
+        </display>
+      </fieldDef>
+
+      <!--  SBES  -->
+      <fieldDef name="sbes" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="SBES">SBES</values>
+        </display>
+      </fieldDef>
+
+      <!--  STEM  -->
+      <fieldDef name="stem" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="STEM">STEM</values>
+        </display>
+      </fieldDef>
+
+      <!--  UGS STAFF  -->
+      <fieldDef name="ugsStaff" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="UGS Staff">UGS Staff</values>
+        </display>
+      </fieldDef>
+
+      <!--  UGS PROGRAM  -->
+      <fieldDef name="ugsProgram" title="">
+        <display>
+          <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>1</value>
+          </meta>
+          <values title="UGS Program">UGS Program</values>
         </display>
       </fieldDef>
 
@@ -758,6 +996,10 @@ function checkBrowserCompatibility(){
       <fieldDef name="newsletterRecipient" title="">
         <display>
           <type>checkbox</type>
+          <meta>
+            <name>size</name>
+            <value>2</value>
+          </meta>
           <values title="I want to receieve the Crucial Communicator Newsletter, sent to faculty and staff regarding important information on graduate education at IUPUI.">Newsletter Recipient</values>
         </display>
       </fieldDef>
@@ -993,19 +1235,20 @@ function checkBrowserCompatibility(){
                   </xsl:with-param>
                 </xsl:call-template>
 
-                <h4>Bulletin</h4>
+                <!-- <h4>Bulletin</h4>
                 <xsl:call-template name="widget">
                   <xsl:with-param name="fieldName" select="'bulletin'" />
-                </xsl:call-template>
-                <div xmlns="" id="idBulletinText">
-                  <h5 style="width: 90%; margin: auto;"><i>For IU Graduate School Programs only</i></h5>
-                </div>
+                </xsl:call-template> -->
+
 
                 <h4>IU Graduate School Student Progression eDoc Approver</h4>
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'maAppAdvDeg'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'phdCommencementApp'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'defenseAnnouncement'" />
@@ -1017,9 +1260,6 @@ function checkBrowserCompatibility(){
                       <xsl:with-param name="fieldName" select="'nomCandidacy'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'phdCommencementApp'" />
-                    </xsl:call-template>
-                    <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'secRecorder'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
@@ -1028,13 +1268,28 @@ function checkBrowserCompatibility(){
                   </xsl:with-param>
                 </xsl:call-template>
 
-                <!-- IUPUI Exclusive Options -->
-                <div xmlns="" id="idIUPUIOptions" style="display:none;">
-                  <h4>IUPUI Graduate Office Roles</h4>
+                <!-- Function Designation (Role) Options -->
+                <div xmlns="" id="idRoleOptions" style="display:none;">
+                  <h4>Function Designations</h4>
                   <xsl:call-template name="inlineWidget">
                     <xsl:with-param name="body">
                       <xsl:call-template name="widget">
                         <xsl:with-param name="fieldName" select="'adminAssistant'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'admissions'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'bulletin'" />
+                      </xsl:call-template>
+                      <div xmlns="" id="idBulletinText">
+                        <h5 style="width: 90%; margin: auto;"><i>For IU Graduate School Programs only</i></h5>
+                      </div>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'bulletinRev'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'cicFreeApp'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
                         <xsl:with-param name="fieldName" select="'curriculumContact'" />
@@ -1043,7 +1298,10 @@ function checkBrowserCompatibility(){
                         <xsl:with-param name="fieldName" select="'depChair'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
-                        <xsl:with-param name="fieldName" select="'gradStudiesAdv'" />
+                        <xsl:with-param name="fieldName" select="'dirGradStudies'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'diversityRelations'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
                         <xsl:with-param name="fieldName" select="'dean'" />
@@ -1064,7 +1322,28 @@ function checkBrowserCompatibility(){
                         <xsl:with-param name="fieldName" select="'gradRecorder'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'iuAdmin'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'nrcContact'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'postdoc'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
                         <xsl:with-param name="fieldName" select="'recruiter'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'sbes'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'stem'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'ugsStaff'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'ugsProgram'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
                         <xsl:with-param name="fieldName" select="'newsletterRecipient'" />
@@ -1233,6 +1512,10 @@ function checkBrowserCompatibility(){
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
+                      <xsl:with-param name="fieldName" select="'phdCommencementApp'" />
+                      <xsl:with-param name="readOnly" select="'true'" />
+                    </xsl:call-template>
+                    <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'defenseAnnouncement'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
@@ -1242,10 +1525,6 @@ function checkBrowserCompatibility(){
                     </xsl:call-template>
                     <xsl:call-template name="widget">
                       <xsl:with-param name="fieldName" select="'nomCandidacy'" />
-                      <xsl:with-param name="readOnly" select="'true'" />
-                    </xsl:call-template>
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'phdCommencementApp'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
@@ -1260,12 +1539,31 @@ function checkBrowserCompatibility(){
                 </xsl:call-template>
 
                 <!-- IUPUI Exclusive Options -->
-                <div xmlns="" id="idIUPUIOptions" style="display:block;">
-                  <h4>IUPUI Graduate Office Roles</h4>
+                <div xmlns="" id="idRoleOptions" style="display:block;">
+                  <h4>Function Designations</h4>
                   <xsl:call-template name="inlineWidget">
                     <xsl:with-param name="body">
                       <xsl:call-template name="widget">
                         <xsl:with-param name="fieldName" select="'adminAssistant'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'admissions'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'bulletin'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <div xmlns="" id="idBulletinText">
+                        <h5 style="width: 90%; margin: auto;"><i>For IU Graduate School Programs only</i></h5>
+                      </div>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'bulletinRev'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'cicFreeApp'" />
                         <xsl:with-param name="readOnly" select="'true'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
@@ -1277,7 +1575,11 @@ function checkBrowserCompatibility(){
                         <xsl:with-param name="readOnly" select="'true'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
-                        <xsl:with-param name="fieldName" select="'gradStudiesAdv'" />
+                        <xsl:with-param name="fieldName" select="'dirGradStudies'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'diversityRelations'" />
                         <xsl:with-param name="readOnly" select="'true'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
@@ -1305,7 +1607,35 @@ function checkBrowserCompatibility(){
                         <xsl:with-param name="readOnly" select="'true'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'iuAdmin'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'nrcContact'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'postdoc'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
                         <xsl:with-param name="fieldName" select="'recruiter'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'sbes'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'stem'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'ugsStaff'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'ugsProgram'" />
                         <xsl:with-param name="readOnly" select="'true'" />
                       </xsl:call-template>
                       <xsl:call-template name="widget">
