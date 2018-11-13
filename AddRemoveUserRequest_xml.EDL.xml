@@ -590,7 +590,7 @@ function checkBrowserCompatibility(){
           <type>checkbox</type>
           <meta>
             <name>size</name>
-            <value>1</value>
+            <value>2</value>
           </meta>
           <values title="Awards and Fellowships Canvas Course">Awards and Fellowships Canvas Course</values>
         </display>
@@ -602,7 +602,7 @@ function checkBrowserCompatibility(){
           <type>checkbox</type>
           <meta>
             <name>size</name>
-            <value>1</value>
+            <value>2</value>
           </meta>
           <values title="IUIE Access">IUIE Access</values>
         </display>
@@ -614,7 +614,7 @@ function checkBrowserCompatibility(){
           <type>checkbox</type>
           <meta>
             <name>size</name>
-            <value>1</value>
+            <value>2</value>
           </meta>
           <values title="Receive Fellowship Information">Fellow Contact Only</values>
         </display>
