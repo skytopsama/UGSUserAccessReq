@@ -116,29 +116,31 @@ function checkBrowserCompatibility(){
               var $removeFirstName = $('#removeFirstName');
               var $removeLastName = $('#removeLastName');
               var $removeUserid = $('#removeUserid');
-              var $addFirstName = $('#addFirstName');
-              var $addLastName = $('#addLastName');
-              var $addUserID = $('#addUserID');
-              var $addJobTitle = $('#addJobTitle');
-              var $addCampusAddress = $('#addCampusAddress');
-              var $addIUEmail = $('#addIUEmail');
+              var $firstName = $('#firstName');
+              var $lastName = $('#lastName');
+              var $userID = $('#userID');
+              var $jobTitle = $('#jobTitle');
+              var $campusAddress = $('#campusAddress');
+              var $iuEmail = $('#iuEmail');
               $addRemoveReplace.val("Select");
               $school.val("");
               $program.val("");
               $removeFirstName.val("");
               $removeLastName.val("");
               $removeUserid.val("");
-              $addFirstName.val("");
-              $addLastName.val("");
-              $addUserID.val("");
-              $addJobTitle.val("");
-              $addCampusAddress.val("");
-              $addIUEmail.val("");
+              $firstName.val("");
+              $lastName.val("");
+              $userID.val("");
+              $jobTitle.val("");
+              $campusAddress.val("");
+              $iuEmail.val("");
+              removeValidation($iuEmail);
+              removeValidation($jobTitle);
               $('#cbRemoveAll').prop('checked', false);
               updateAll();
               document.getElementById("idContactOnly").style.display="none";
               document.getElementById("idRemovePerson").style.display="none";
-              document.getElementById("idAddPerson").style.display="none";
+              document.getElementById("idPersonInfo").style.display="none";
               document.getElementById("idRemoveApps").style.display="none";
               document.getElementById("idAddApps").style.display="none";
               document.getElementById("idChangeApps").style.display="none";
@@ -155,21 +157,21 @@ function checkBrowserCompatibility(){
                var $removeFirstName = $('#removeFirstName');
                var $removeLastName = $('#removeLastName');
                var $removeUserid = $('#removeUserid');
-               var $addFirstName = $('#addFirstName');
-               var $addLastName = $('#addLastName');
-               var $addUserID = $('#addUserID');
-               var $addJobTitle = $('#addJobTitle');
-               var $addCampusAddress = $('#addCampusAddress');
-               var $addIUEmail = $('#addIUEmail');
+               var $firstName = $('#firstName');
+               var $lastName = $('#lastName');
+               var $userID = $('#userID');
+               var $jobTitle = $('#jobTitle');
+               var $campusAddress = $('#campusAddress');
+               var $iuEmail = $('#iuEmail');
                var $justificationForRequest = $('#justificationForRequest');
                var $contactOnly = $('#contactOnly');
                var $removeAll = $('#cbRemoveAll');
-               $addFirstName.val("");
-               $addLastName.val("");
-               $addUserID.val("");
-               $addJobTitle.val("");
-               $addCampusAddress.val("");
-               $addIUEmail.val("");
+               $firstName.val("");
+               $lastName.val("");
+               $userID.val("");
+               $jobTitle.val("");
+               $campusAddress.val("");
+               $iuEmail.val("");
                $removeFirstName.val("");
                $removeLastName.val("");
                $removeUserid.val("");
@@ -182,10 +184,12 @@ function checkBrowserCompatibility(){
                switch (addRemoveReplace)
                {
                   case "add":
-                    document.getElementById("idAddPerson").style.display="block";
+                    document.getElementById("idPersonInfo").style.display="block";
                     document.getElementById("idAddHeader").style.display="block";
+                    document.getElementById("idRemoveHeader").style.display="none";
                     document.getElementById("idChangeHeader").style.display="none";
                     document.getElementById("idContactOnly").style.display="block";
+                    document.getElementById("idAddPersonInfo").style.display="block";
                     document.getElementById("idRemovePerson").style.display="none";
                     document.getElementById("idOptions").style.display="block";
                     document.getElementById("idComments").style.display="block";
@@ -196,15 +200,19 @@ function checkBrowserCompatibility(){
                     document.getElementById("idBoxLink").style.display="block";
                     document.getElementById("idSwapOptions").style.display="none";
                     document.getElementById("idRoleOptions").style.display="block";
+                    makeValidation($iuEmail);
+                    makeValidation($jobTitle);
                     /*if (campus == "IN")
                       {document.getElementById("idRoleOptions").style.display="block";}
                     else
                       {document.getElementById("idRoleOptions").style.display="none";}*/
                     break;
                   case "remove":
-                    document.getElementById("idRemovePerson").style.display="block";
-                    document.getElementById("idAddPerson").style.display="none";
+                    document.getElementById("idRemovePerson").style.display="none";
+                    document.getElementById("idPersonInfo").style.display="block";
+                    document.getElementById("idAddPersonInfo").style.display="none";
                     document.getElementById("idAddHeader").style.display="none";
+                    document.getElementById("idRemoveHeader").style.display="block";
                     document.getElementById("idChangeHeader").style.display="none";
                     document.getElementById("idContactOnly").style.display="block";
                     document.getElementById("idRemoveAll").style.display="block";
@@ -216,14 +224,18 @@ function checkBrowserCompatibility(){
                     document.getElementById("idBoxLink").style.display="block";
                     document.getElementById("idSwapOptions").style.display="none";
                     document.getElementById("idRoleOptions").style.display="block";
+                    removeValidation($iuEmail);
+                    removeValidation($jobTitle);
                     /*if (campus == "IN")
                       {document.getElementById("idRoleOptions").style.display="block";}
                     else
                       {document.getElementById("idRoleOptions").style.display="none";}*/
                     break;
                   case "change":
-                    document.getElementById("idAddPerson").style.display="block";
+                    document.getElementById("idPersonInfo").style.display="block";
+                    document.getElementById("idAddPersonInfo").style.display="none";
                     document.getElementById("idAddHeader").style.display="none";
+                    document.getElementById("idRemoveHeader").style.display="none";
                     document.getElementById("idChangeHeader").style.display="block";
                     document.getElementById("idContactOnly").style.display="block";
                     document.getElementById("idRemovePerson").style.display="none";
@@ -236,6 +248,8 @@ function checkBrowserCompatibility(){
                     document.getElementById("idRemoveApps").style.display="none";
                     document.getElementById("idSwapOptions").style.display="none";
                     document.getElementById("idRoleOptions").style.display="block";
+                    removeValidation($iuEmail);
+                    removeValidation($jobTitle);
                     /*if (campus == "IN")
                       {document.getElementById("idRoleOptions").style.display="block";}
                     else
@@ -243,13 +257,17 @@ function checkBrowserCompatibility(){
                     break;
                   case "replace":
                     document.getElementById("idRemovePerson").style.display="block";
-                    document.getElementById("idAddPerson").style.display="block";
+                    document.getElementById("idPersonInfo").style.display="block";
+                    document.getElementById("idAddPersonInfo").style.display="none";
                     document.getElementById("idAddHeader").style.display="block";
+                    document.getElementById("idRemoveHeader").style.display="none";
                     document.getElementById("idChangeHeader").style.display="none";
                     document.getElementById("idContactOnly").style.display="none";
                     document.getElementById("idComments").style.display="block";
                     document.getElementById("idOptions").style.display="none";
                     document.getElementById("idSwapOptions").style.display="block";
+                    removeValidation($iuEmail);
+                    removeValidation($jobTitle);
                     break;
                   case "Select":
                     console.log("ShowSections Select");
@@ -257,7 +275,7 @@ function checkBrowserCompatibility(){
                     break;
                   default:
                     document.getElementById("idRemovePerson").style.display="none";
-                    document.getElementById("idAddPerson").style.display="none";
+                    document.getElementById("idPersonInfo").style.display="none";
                     document.getElementById("idRemoveApps").style.display="none";
                     document.getElementById("idAddApps").style.display="none";
                     document.getElementById("idChangeApps").style.display="none";
@@ -267,6 +285,20 @@ function checkBrowserCompatibility(){
                     document.getElementById("idOptions").style.display="none";
                }
 
+              }
+
+              function makeValidation(fieldID) {
+                fieldID.attr("data-role", "required");
+                fieldID.attr("data-validator", "non-blank");
+
+                var validationMessage = "'" + $('label[for=' + fieldID[0].name + ']')[0].innerHTML + "' must have a value" ;
+                fieldID.attr("data-validation-message", validationMessage);
+              }
+
+              function removeValidation (fieldID) {
+                fieldID.removeAttr("data-role", );
+                fieldID.removeAttr("data-validator", );
+                fieldID.removeAttr("data-validation-message", );
               }
 
               function ToggleContactOnly() {
@@ -321,7 +353,7 @@ function checkBrowserCompatibility(){
                 //Resets displayed sections on campus change
                 document.getElementById("idAddRemove").style.display="none";
                 document.getElementById("idRemovePerson").style.display="none";
-                document.getElementById("idAddPerson").style.display="none";
+                document.getElementById("idPersonInfo").style.display="none";
                 document.getElementById("idRemoveApps").style.display="none";
                 document.getElementById("idAddApps").style.display="none";
                 document.getElementById("idSwapOptions").style.display="none";
@@ -360,7 +392,7 @@ function checkBrowserCompatibility(){
               function setDepartments(){
                 document.getElementById("idAddRemove").style.display="none";
                 document.getElementById("idRemovePerson").style.display="none";
-                document.getElementById("idAddPerson").style.display="none";
+                document.getElementById("idPersonInfo").style.display="none";
                 document.getElementById("idRemoveApps").style.display="none";
                 document.getElementById("idAddApps").style.display="none";
                 document.getElementById("idSwapOptions").style.display="none";
@@ -440,7 +472,7 @@ function checkBrowserCompatibility(){
       </fieldDef>
 
       <!-- ADD PERSON -->
-      <fieldDef name="addUserID" title="NetworkID">
+      <fieldDef name="userID" title="NetworkID">
         <display>
           <type>text</type>
           <meta>
@@ -455,7 +487,7 @@ function checkBrowserCompatibility(){
         <validation required="true" />
       </fieldDef>
 
-      <fieldDef name="addFirstName" title="First Name">
+      <fieldDef name="firstName" title="First Name">
         <display>
           <type>text</type>
           <meta>
@@ -470,7 +502,7 @@ function checkBrowserCompatibility(){
         <validation required="true" />
       </fieldDef>
 
-      <fieldDef name="addLastName" title="Last Name">
+      <fieldDef name="lastName" title="Last Name">
         <display>
           <type>text</type>
           <meta>
@@ -485,7 +517,7 @@ function checkBrowserCompatibility(){
         <validation required="true" />
       </fieldDef>
 
-      <fieldDef name="addJobTitle" title="Job Title">
+      <fieldDef name="jobTitle" title="Job Title">
         <display>
           <type>text</type>
           <meta>
@@ -497,10 +529,10 @@ function checkBrowserCompatibility(){
             <value>3</value>
           </meta>
         </display>
-        <validation required="true" />
+        <validation required="false" />
       </fieldDef>
 
-      <fieldDef name="addCampusPhone" title="Campus Phone">
+      <fieldDef name="campusPhone" title="Campus Phone">
         <display>
           <type>text</type>
           <meta>
@@ -514,7 +546,7 @@ function checkBrowserCompatibility(){
         </display>
       </fieldDef>
 
-      <fieldDef name="addIUEmail" title="IU Email">
+      <fieldDef name="iuEmail" title="IU Email">
         <display>
           <type>text</type>
           <meta>
@@ -526,10 +558,10 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
-        <validation required="true" />
+        <validation required="false" />
       </fieldDef>
 
-      <fieldDef name="addCampusAddress" title="Campus Address">
+      <fieldDef name="campusAddress" title="Campus Address">
         <display>
           <type>text</type>
           <meta>
@@ -556,7 +588,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
-        <validation required="true" />
+        <validation required="false" />
       </fieldDef>
 
       <fieldDef name="removeFirstName" title="First Name">
@@ -571,7 +603,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
-        <validation required="true" />
+        <validation required="false" />
       </fieldDef>
 
       <fieldDef name="removeLastName" title="Last Name">
@@ -586,7 +618,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
-        <validation required="true" />
+        <validation required="false" />
       </fieldDef>
 
       <!--  OPTIONS   -->
@@ -1153,7 +1185,7 @@ function checkBrowserCompatibility(){
               </div>
 
               <!--  GROUP OF ADD PERSON WIDGETS-->
-              <div xmlns="" id="idAddPerson" style="display:none">
+              <div xmlns="" id="idPersonInfo" style="display:none">
                 <div xmlns="" id="idAddHeader" style="display:block;">
                   <h3>Add</h3>
                 </div>
@@ -1167,36 +1199,38 @@ function checkBrowserCompatibility(){
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addUserID'" />
+                      <xsl:with-param name="fieldName" select="'userID'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addFirstName'" />
+                      <xsl:with-param name="fieldName" select="'firstName'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addLastName'" />
+                      <xsl:with-param name="fieldName" select="'lastName'" />
                     </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
 
-                <xsl:call-template name="inlineWidget">
-                  <xsl:with-param name="body">
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addJobTitle'" />
-                    </xsl:call-template>
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addCampusAddress'" />
-                    </xsl:call-template>
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addIUEmail'" />
-                    </xsl:call-template>
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addCampusPhone'" />
-                    </xsl:call-template>
-                  </xsl:with-param>
-                </xsl:call-template>
+                <div xmlns="" id="idAddPersonInfo" style="display:none;">
+                  <xsl:call-template name="inlineWidget">
+                    <xsl:with-param name="body">
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'jobTitle'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'campusAddress'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'iuEmail'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'campusPhone'" />
+                      </xsl:call-template>
+                    </xsl:with-param>
+                  </xsl:call-template>
+                </div>
               </div>
 
-              <!--  GROUP OF REMOVE PERSON WIDGETS-->
+              <!--  GROUP OF REMOVE PERSON WIDGETS--> <!-- Exclusively used for REPLACE -->
               <div xmlns="" id="idRemovePerson" style="display:none">
                 <h3>Remove</h3>
                 <xsl:call-template name="inlineWidget">
@@ -1432,48 +1466,50 @@ function checkBrowserCompatibility(){
               </div>
 
               <!--  GROUP OF ADD PERSON WIDGETS-->
-              <div xmlns="" id="idAddPersonReadOnly" style="display:block">
+              <div xmlns="" id="idPersonInfoReadOnly" style="display:block">
                 <h3>Add</h3>
                 <xsl:call-template name="inlineWidget">
                   <xsl:with-param name="body">
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addUserID'" />
+                      <xsl:with-param name="fieldName" select="'userID'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addFirstName'" />
+                      <xsl:with-param name="fieldName" select="'firstName'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                     <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addLastName'" />
+                      <xsl:with-param name="fieldName" select="'lastName'" />
                       <xsl:with-param name="readOnly" select="'true'" />
                     </xsl:call-template>
                   </xsl:with-param>
                 </xsl:call-template>
 
-                <xsl:call-template name="inlineWidget">
-                  <xsl:with-param name="body">
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addJobTitle'" />
-                      <xsl:with-param name="readOnly" select="'true'" />
-                    </xsl:call-template>
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addCampusAddress'" />
-                      <xsl:with-param name="readOnly" select="'true'" />
-                    </xsl:call-template>
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addIUEmail'" />
-                      <xsl:with-param name="readOnly" select="'true'" />
-                    </xsl:call-template>
-                    <xsl:call-template name="widget">
-                      <xsl:with-param name="fieldName" select="'addCampusPhone'" />
-                      <xsl:with-param name="readOnly" select="'true'" />
-                    </xsl:call-template>
-                  </xsl:with-param>
-                </xsl:call-template>
+                <div xmlns="" id="idAddPersonInfoReadOnly" style="display:block;">
+                  <xsl:call-template name="inlineWidget">
+                    <xsl:with-param name="body">
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'jobTitle'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'campusAddress'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'iuEmail'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                      <xsl:call-template name="widget">
+                        <xsl:with-param name="fieldName" select="'campusPhone'" />
+                        <xsl:with-param name="readOnly" select="'true'" />
+                      </xsl:call-template>
+                    </xsl:with-param>
+                  </xsl:call-template>
+                </div>
               </div>
 
-              <!--  GROUP OF REMOVE PERSON WIDGETS-->
+              <!--  GROUP OF REMOVE PERSON WIDGETS--> <!-- Exclusively used for REPLACE -->
               <div xmlns="" id="idRemovePersonReadOnly" style="display:block">
                 <h3>Remove</h3>
                 <xsl:call-template name="inlineWidget">
