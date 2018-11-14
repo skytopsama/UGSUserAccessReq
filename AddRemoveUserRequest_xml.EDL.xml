@@ -452,6 +452,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
+        <validation required="true" />
       </fieldDef>
 
       <fieldDef name="addFirstName" title="First Name">
@@ -466,7 +467,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
-        <validation required="false" />
+        <validation required="true" />
       </fieldDef>
 
       <fieldDef name="addLastName" title="Last Name">
@@ -481,6 +482,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
+        <validation required="true" />
       </fieldDef>
 
       <fieldDef name="addJobTitle" title="Job Title">
@@ -495,6 +497,7 @@ function checkBrowserCompatibility(){
             <value>3</value>
           </meta>
         </display>
+        <validation required="true" />
       </fieldDef>
 
       <fieldDef name="addCampusPhone" title="Campus Phone">
@@ -523,6 +526,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
+        <validation required="true" />
       </fieldDef>
 
       <fieldDef name="addCampusAddress" title="Campus Address">
@@ -552,6 +556,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
+        <validation required="true" />
       </fieldDef>
 
       <fieldDef name="removeFirstName" title="First Name">
@@ -566,6 +571,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
+        <validation required="true" />
       </fieldDef>
 
       <fieldDef name="removeLastName" title="Last Name">
@@ -580,6 +586,7 @@ function checkBrowserCompatibility(){
             <value>2</value>
           </meta>
         </display>
+        <validation required="true" />
       </fieldDef>
 
       <!--  OPTIONS   -->
@@ -1149,6 +1156,9 @@ function checkBrowserCompatibility(){
               <div xmlns="" id="idAddPerson" style="display:none">
                 <div xmlns="" id="idAddHeader" style="display:block;">
                   <h3>Add</h3>
+                </div>
+                <div xmlns="" id="idRemoveHeader" style="display:none;">
+                  <h3>Remove</h3>
                 </div>
                 <div xmlns="" id="idChangeHeader" style="display:none;">
                   <h3>Change</h3>
